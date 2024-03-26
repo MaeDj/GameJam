@@ -7,4 +7,8 @@ package gamejamjeuoie;
 
 public class Plus extends Evenement{
     
+    public Plus(){
+        super();
+        super.nom="Vous allez réviser à la BU, vous obtenez +1 sur votre moyenne ! ";
+    }
 }

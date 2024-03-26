@@ -10,9 +10,8 @@ package gamejamjeuoie;
  */
 public class main {
     public static void main(String[] args) {
-        Evenement bonus = new Bonus("Evenement Bonus");
-
-        System.out.println(bonus.toString());
+       Jeu jeu1=new Jeu(); 
+       jeu1.jeu();
 
     }
 }
