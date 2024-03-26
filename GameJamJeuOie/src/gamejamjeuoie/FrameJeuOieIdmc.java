@@ -4,17 +4,57 @@
  */
 package gamejamjeuoie;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author mae
  */
 public class FrameJeuOieIdmc extends javax.swing.JFrame {
-
+    JLabel[][] plateau=new JLabel[4][9];
     /**
      * Creates new form FrameJeuOieIdmc
      */
     public FrameJeuOieIdmc() {
         initComponents();
+         int Horiz, Vert;
+        Horiz = 100;
+        Vert = 150;
+        int comp=0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 9; j++) { // on créé notre plateau
+
+               plateau[i][j] = new JLabel();
+               if(j==0){
+                   plateau[i][j].setText("=>");
+               }
+               else{
+                   comp=comp+1;
+                   plateau[i][j].setText(String.valueOf(comp));
+               }
+
+                plateau[i][j].setLocation(Horiz, Vert);// on pose le Jlabel à 300px à l'horizontal et à 300 px à la verticale et on avance de 70 px à chaque label vers la droite 
+
+                plateau[i][j].setSize(70, 70);
+
+                panel1.add(plateau[i][j]);
+                Horiz = Horiz + 70;
+                panel1.repaint();
+                if (j == 8) { // des qu'on arrive en bout de ligne on descend de 70 px aussi pour rester proportionnel
+                    Vert = Vert + 70;
+                    Horiz = 100;
+                }
+                plateau[i][j].setVerticalAlignment(SwingConstants.CENTER);// affiche le texte au milieu de la case 
+                plateau[i][j].setHorizontalAlignment(SwingConstants.CENTER);
+                // code inspiré de https://stackoverflow.com/questions/39798401/how-to-make-a-border-fit-around-a-jlabel
+                plateau[i][j].setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.BLACK));
+                // on change la bordure en noir avec la méthode setBorder de la classe JComponent qui est extends par la classe JLabel 
+            }
+
+        }
     }
 
     /**
@@ -36,9 +76,10 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         label1 = new javax.swing.JButton();
         label2 = new javax.swing.JButton();
         label3 = new javax.swing.JButton();
+        panel1 = new java.awt.Panel();
+        de = new javax.swing.JButton();
         infos = new javax.swing.JLabel();
         nbPoint = new javax.swing.JLabel();
-        de = new javax.swing.JButton();
 
         questionAPoser.setText("Question à poser");
 
@@ -121,10 +162,6 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        infos.setText("Infos");
-
-        nbPoint.setText("pt");
-
         de.setText("lancer le dé");
         de.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,32 +169,56 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
             }
         });
 
+        infos.setText("Infos");
+
+        nbPoint.setText("pt");
+
+        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
+        panel1.setLayout(panel1Layout);
+        panel1Layout.setHorizontalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(320, 320, 320)
+                        .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(198, 198, 198)
+                        .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(364, 364, 364)
+                        .addComponent(de)))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        panel1Layout.setVerticalGroup(
+            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, Short.MAX_VALUE)
+                .addComponent(de)
+                .addGap(63, 63, 63))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(de)))
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
-                .addComponent(de)
-                .addGap(30, 30, 30))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -215,6 +276,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private javax.swing.JFrame mise;
     private javax.swing.JLabel miseLabel;
     private javax.swing.JLabel nbPoint;
+    private java.awt.Panel panel1;
     private javax.swing.JFrame question;
     private javax.swing.JLabel questionAPoser;
     private javax.swing.JButton rep1;
