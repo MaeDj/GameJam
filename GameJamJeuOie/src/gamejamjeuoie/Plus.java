@@ -4,12 +4,7 @@
  */
 package gamejamjeuoie;
 
-/**
- *
- * @author Elève
- */
-public abstract class Evenement {
-    public int provoquerevenement(){
-    return 1;
-    }
+
+public class Plus extends Evenement{
+    
 }
