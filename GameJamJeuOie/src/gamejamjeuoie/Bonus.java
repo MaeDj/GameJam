@@ -9,8 +9,7 @@ public class Bonus extends Evenement {
     
     int points;
 
-    public Bonus(String nom) {
-        super();
+    public Bonus() {
         Random rand = new Random();
         int choix = rand.nextInt(4);
         if (choix == 0) {
