@@ -15,6 +15,6 @@ public abstract class Evenement {
         this.nom = nom;
     }
 
-    public abstract String toString();
+  
 
 }
