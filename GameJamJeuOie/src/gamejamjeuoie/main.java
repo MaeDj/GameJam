@@ -8,12 +8,11 @@ package gamejamjeuoie;
  *
  * @author Elève
  */
-public abstract class Evenement {
-    String nom;
+public class main {
+    public static void main(String[] args) {
+        Evenement bonus = new Bonus("Evenement Bonus");
 
-    public Evenement(String nom) {
-        this.nom = nom;
+        System.out.println(bonus.toString());
+
     }
-
-    public abstract String toString();
 }
