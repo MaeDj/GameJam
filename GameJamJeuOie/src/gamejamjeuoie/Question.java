@@ -6,9 +6,8 @@ import java.util.Scanner;
 
 public class Question extends Evenement {
 
-   
-    private ArrayList<String[]> questions;
-        private String[]reponse;
+    private ArrayList<String[]> questions=new ArrayList<>();
+    private String[] reponse;
 
     public Question() {
         String[] test1 = {"Analyse:Quelle est la dérivée de ln(x) ?", "1) 1/x", "2) 42", "3) f(x)", "1"};
@@ -45,34 +44,53 @@ public class Question extends Evenement {
             Random ra = new Random();
             int rep = ra.nextInt(9) + 1;
             super.nom = questions.get(rep)[0];
-            this.reponse=questions.get(rep);
+            this.reponse = questions.get(rep);
 
         }
     }
 
     public int poserQuestion() {
+        boolean test = false;
+        boolean test1 = false;
+        int points = 0;
+        int niv = 0;
         Scanner lecture = new Scanner(System.in);
-        System.out.println("Vous misez combien pour la question suivante?");
-        int niv = lecture.nextInt();
-        System.out.println(nom);
-        int points=0;
-        try {
-            String response = lecture.nextLine();
-           
-                        if (Integer.parseInt(reponse[4])==Integer.parseInt(response)) {
-                            points = niv;
-                            
-                        } else {
-                            points = -niv;
-                           
-                        }
-    
-                
-            
-        } catch (Exception e) {
-            System.out.println("Sois pas bête , choisie une réponse proposée");
+        while (!test1) {
+            try {
+                System.out.println("Vous misez combien pour la question suivante?");
+                lecture = new Scanner(System.in);
+                niv = lecture.nextInt();
+                if (niv == 1 || niv == 2 || niv == 3) {
+                    System.out.println("We get your bet!!");
+                    test = true;
+                } else {
+                    System.out.println("Mise non conforme!!");
+                }
+
+            } catch (Exception e) {
+                System.out.println("Sois pas bête , choisi une mise correcte");
+            }
+
         }
-        return(points);
+        while (!test) {
+            try {
+                System.out.println(nom);
+                String response = lecture.nextLine();
+                if (Integer.parseInt(response) == 1 || Integer.parseInt(response) == 2 || Integer.parseInt(response) == 3) {
+                    if (Integer.parseInt(reponse[4]) == Integer.parseInt(response)) {
+                        points = niv;
+                        test = true;
+                    } else {
+                        points = -niv;
+                        test = true;
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Sois pas bête , choisi une réponse proposée");
+            }
+
+        }
+        return (points);
     }
 
 }
