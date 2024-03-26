@@ -14,8 +14,7 @@ public class Joueur {
         this.aUnBonus = false;
     }
     
-    public void avancer(){ //méthode pour faire avancer le joueur (modifier sa position)
-    int dé = (int) Math.random()*6;
+    public void avancer(int dé){ //méthode pour faire avancer le joueur (modifier sa position)
     this.position+=dé;
     }
 
