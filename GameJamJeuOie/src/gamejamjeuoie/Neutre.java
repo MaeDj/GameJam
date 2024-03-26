@@ -6,8 +6,8 @@ package gamejamjeuoie;
 
 /**
  *
- * @author Elève
+ * @author Junior
  */
-public abstract class Evenement {
-    public abstract class toString(){};
+public class Neutre {
+    
 }
