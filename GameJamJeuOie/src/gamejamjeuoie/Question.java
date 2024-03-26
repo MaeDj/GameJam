@@ -1,30 +1,58 @@
 package gamejamjeuoie;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Question extends Evenement {
-    private String[] matieres = {"Analyse", "Java", "Web"};
-    private String[][][] questions = {
-            { // Questions pour l'Analyse
-                    {"Qu'est-ce qu'une dérivée ?", "Quelle est la dérivée de ln(x) ?", "Quelle est la dérivée de sin(x) ?"},
-                    {"Quelle est l'intégrale de x^2 ?", "Quelle est l'intégrale de e^x ?", "Quelle est l'intégrale de 1/x ?"},
-                    {"Qu'est-ce qu'une série convergente ?", "Quel est le critère de convergence d'une série alternée ?", "Qu'est-ce qu'un développement limité ?"}
-            },
-            { // Questions pour Java
-                    {"Qu'est-ce qu'une classe en Java ?", "Quelle est la différence entre une classe abstraite et une interface ?", "Qu'est-ce que la surcharge de méthodes ?"},
-                    {"Qu'est-ce qu'une exception en Java ?", "Quelle est la différence entre throw et throws ?", "Qu'est-ce que la gestion de la mémoire en Java ?"},
-                    {"Qu'est-ce que le polymorphisme en Java ?", "Quelle est la différence entre == et equals() en Java ?", "Qu'est-ce que le Garbage Collector ?"}
-            },
-            { // Questions pour le Web
-                    {"Qu'est-ce que HTML ?", "Quelle est la différence entre HTML et XHTML ?", "Qu'est-ce que CSS ?"},
-                    {"Qu'est-ce que JavaScript ?", "Qu'est-ce qu'un événement en JavaScript ?", "Qu'est-ce que AJAX ?"},
-                    {"Qu'est-ce que PHP ?", "Qu'est-ce que MySQL ?", "Qu'est-ce que RESTful API ?"}
-            }
-    };
+    
+   
+    private ArrayList<String[]> questions;
+        
+   
     
 
     public Question() {
+        String[] test1={"Analyse:Quelle est la dérivée de ln(x) ?","1) 1/x","2) 42","3) f(x)","1"};
+       questions.add(test1);
+       
+        String[] test2={"Analyse:Qu'est-ce qu'un développement limité ?", "1) Une série de Taylor", "2) Une série de Fourier","3) Une série de Maclaurin","4"};
+       questions.add(test2);
+       
+        String[] test3={"Java: Par quoi commence une classe? ","1) Une majuscule","2) une minuscule","3) Un arc en ciel","1"};
+       questions.add(test3);
+       
+        String[] test4={"Culture G: Quelle est la capitale de Singapour ?","1) Singapour","2) Paris ","3) LaValette","1"};
+       questions.add(test4);
+       
+        String[] test5={"Base de donnée: Qu'est ce qu'un SGBD?","Super Génial Beautiful Délégué","un System de Gestion de Base de Donnée ","Une application ","2"};
+       questions.add(test5);
+       
+        String[] test6={"Culture générale: A quelle année remonte les derniers JO en France","1) 2048","2) hier","3) 1924","3"};
+       questions.add(test6);
+       
+        String[] test7={"Culture générale: de quel style sont le plupart des bâtiments à Nancy?","1)Géorgien","2)Hausmanien","3)Aucun","2"};
+       questions.add(test7);
+       
+        String[] test8={"Automate: Est ce que (a+b)* contient tout les mots?","1)oui","2)non","3)peut etre ",""};
+       questions.add(test8);
+       
+        String[] test9={"Math: identités remarquable a^2+b^2?","1) (a-b)^2+(a+b)^2","2) 0","3) (a+b)(a-b)","2"};
+       questions.add(test9);
+       
+        String[] test10={"Culture générale: Quelle est la monnaie de Nancy?","1) Le florain","2) l'euro","3)Le dollar","1"};
+       questions.add(test10);
+       
+       for(int i=0;i<10;i++){
+           Random ra=new Random();
+           int rep=ra.nextInt(9)+1;
+           super.nom=questions.get(rep)[0];
+          
+        }
+        
+        
+        
+        
         
     }
 }
