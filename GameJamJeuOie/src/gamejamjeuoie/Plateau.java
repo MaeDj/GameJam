@@ -26,7 +26,6 @@ public class Plateau implements Listevent{
     }
     
     public void Tour(){ //méthode pour faire passer un tour au joueur
-        joueur.avancer();
         joueur.subitUnEvenement(plateau.get(joueur.getPosition()));
     }
 }

@@ -4,18 +4,15 @@
  */
 package gamejamjeuoie;
 
-
-
+/**
+ *
  * @author Elève
  */
-public class Neutre extends Evenement {
-    public Neutre(String nom){
-        super(nom);
-    }
+public class main {
+    public static void main(String[] args) {
+        Evenement bonus = new Bonus("Evenement Bonus");
 
-    @Override
-    void declencher() {
-        System.out.println("C'est un événement neutre : " + nom);
-    }
+        System.out.println(bonus.toString());
 
+    }
 }
