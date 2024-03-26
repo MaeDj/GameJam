@@ -21,7 +21,6 @@ public class Plateau {
     }
     
     public String toString(){
-    return;
+    return plateau.toString();
     }
-    
 }
