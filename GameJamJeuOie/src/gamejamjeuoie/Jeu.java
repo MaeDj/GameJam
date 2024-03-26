@@ -27,37 +27,37 @@ public class Jeu implements Listevent {
             de = ra.nextInt();
             System.out.println("D'après le dé, Vous allez avancer de " + de);
             j1.avancer(de);//permet d'avancer le joueur du nombre de cases de ton dé
-            System.out.println(plateau1.plateau.get(j1.position));
-            if (plateau1.plateau.get(j1.position) instanceof Malus) {//si l'event est un malus
+            System.out.println(plateau1.get(j1.getPosition()));
+            if (plateau1.get(j1.getPosition()) instanceof Malus) {//si l'event est un malus
 
-                Malus malus = (Malus) plateau1.plateau.get(j1.position);
+                Malus malus = (Malus) plateau1.get(j1.getPosition());
                 System.out.println(malus);
-                j1.setNbPt(j1.getNbPt() - (plateau1.plateau.get(j1.position).pt));
-            } else if (plateau1.plateau.get(j1.position) instanceof Bonus) {// si l'event est un bonus 
+                j1.setNbPt(j1.getNbPt() - (plateau1.get(j1.getPosition()).pt));
+            } else if (plateau1.get(j1.getPosition()) instanceof Bonus) {// si l'event est un bonus 
 
-                Bonus bonus = (Bonus) plateau1.plateau.get(j1.position);
+                Bonus bonus = (Bonus) plateau1.get(j1.getPosition());
                 System.out.println(bonus);
-                j1.setNbPt(j1.getNbPt() + (plateau1.plateau.get(j1.position).pt));// on ajoute au joueur son nb de points 
-            } else if (plateau1.plateau.get(j1.position) instanceof Question) {// si l'event est une question
-                Question question = (Question) plateau1.plateau.get(j1.position);
+                j1.setNbPt(j1.getNbPt() + (plateau1.get(j1.getPosition()).pt));// on ajoute au joueur son nb de points 
+            } else if (plateau1.get(j1.getPosition()) instanceof Question) {// si l'event est une question
+                Question question = (Question) plateau1.get(j1.getPosition());
                 int nbPtGagneOuPerdu = question.poserQuestion();//on récupère avec la méthode posé question le nb de points gagnés ou perdus pour le joueur 
-                if (j1.ptPlus && nbPtGagneOuPerdu > 0) {
+                if (j1.isaUnBonus() && nbPtGagneOuPerdu > 0) {
                     System.out.println("Grace à votre précédente action vous remportez un point de plus à la question ");
-                    j1.setnbPt(j1.getNbPt() + nbPtGagneOuPerdu + 1);
-                    j1.ptPlus = false;
+                    j1.setNbPt(j1.getNbPt() + nbPtGagneOuPerdu + 1);
+                    j1.setaUnBonus(false);
                 } else {
-                    j1.setnbPt(j1.getNbPt() + nbPtGagneOuPerdu);// nombre positif ou négatif 
+                    j1.setNbPt(j1.getNbPt() + nbPtGagneOuPerdu);// nombre positif ou négatif 
                 }
 
-            } else if (plateau1.plateau.get(j1.position) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
+            } else if (plateau1.get(j1.getPosition()) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
 
-                Plus plus = (Plus) plateau1.plateau.get(j1.position);
+                Plus plus = (Plus) plateau1.get(j1.getPosition());
                 System.out.println(plus);
-                plus.ajouterPtPlus();//change le booleen de joueur en true 
+                j1.setaUnBonus(true);//change le booleen de joueur en true 
 
             }
         }
-        if (j1.getNbpoints() >= 10) {
+        if (j1.getNbPt() >= 10) {
             System.out.println("Vous avez remporté la partie! Le précieux diplôme est entre vos main!");
         } else {
             System.out.println("Vous n'avez pas 10 de moyenne, vous redoublez ");

@@ -8,6 +8,6 @@ package gamejamjeuoie;
  *
  * @author Elève
  */
-public class Question {
+public class Question extends Evenement{
     
 }

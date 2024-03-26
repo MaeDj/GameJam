@@ -1,19 +1,15 @@
+package gamejamjeuoie;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package gamejamjeuoie;
-
 /**
  *
- * @author Junior
+ * @author mae
  */
-public abstract class Evenement {
-    String nom;
 
-    public Evenement(String nom) {
-        this.nom = nom;
-    }
+public class Evenement {
+    protected String nom;
 
-    public abstract String toString();
 }
