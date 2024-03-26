@@ -4,17 +4,7 @@
  */
 package gamejamjeuoie;
 
-/**
- *
- * @author Elève
- */
-public abstract class Evenement {
-    String nom;
 
-    public Evenement(String nom) {
-        this.nom = nom;
-    }
-
-    public abstract String toString();
-
+public class Plus extends Evenement{
+    
 }
