@@ -11,5 +11,4 @@ package gamejamjeuoie;
 
 public class Evenement {
     protected String nom;
-
 }

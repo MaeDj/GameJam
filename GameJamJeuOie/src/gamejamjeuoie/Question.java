@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Question extends Evenement {
     
    
-    private ArrayList<String[]> questions;
+    private ArrayList<String[]> questions=new ArrayList<>();
         
    
     
