@@ -3,19 +3,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package gamejamjeuoie;
+import java.util.ArrayList;
+import java.util.Random;
 
 
 
+/**
  * @author Elève
  */
 public class Neutre extends Evenement {
-    public Neutre(String nom){
-        super(nom);
+        private ArrayList<String> nomsNeutres;
+
+    public Neutre() {
+        super(); // Appel du constructeur de la classe mère Evenement
+        nomsNeutres = new ArrayList<>();
+        nomsNeutres.add("hahaha c'est les vacances, pas de point!!!");
+        nomsNeutres.add("hahaha  c'est la pause café, pas de point!!!");
+        nomsNeutres.add("hahaha  un jour férié, pas de point");
+        Random rand = new Random();
+        int choix = rand.nextInt(nomsNeutres.size());
+        String nomNeutre = nomsNeutres.get(choix);
+        super.nom=nomNeutre;
     }
 
-    @Override
-    void declencher() {
-        System.out.println("C'est un événement neutre : " + nom);
+   
+    public String toString() {
+       return (super.nom);
     }
+    
 
 }

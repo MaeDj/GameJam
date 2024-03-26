@@ -8,11 +8,14 @@ import java.util.ArrayList;
 
 public class Plateau implements Listevent{
     ArrayList<Evenement> plateau;
+    ArrayList<String> questionDejaPose;
 
     public Plateau() { //initialisation du plateau
         for(int i=0;i<32;i++){
-        plateau.add(tabEvent[i]);
+            int alea = (int) Math.random()*45;
+        plateau.add(tabEvent[alea]);
                 }
+        ArrayList<Question> questionDejaPose = new ArrayList<Question>();
     }
     
     @Override
@@ -34,5 +37,9 @@ public class Plateau implements Listevent{
     
     public Evenement get(int pos){
     return plateau.get(pos);
+    }
+    
+    public boolean verifQuestion(String question){
+        return(questionDejaPose.contains(question));
     }
 }
