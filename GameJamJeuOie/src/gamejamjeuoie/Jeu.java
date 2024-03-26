@@ -26,7 +26,7 @@ public class Jeu implements Listevent {
             Random ra = new Random();
             de = ra.nextInt();
             System.out.println("D'après le dé, Vous allez avancer de " + de);
-            j1.avancerJoueur(de, plateau1);//permet d'avancer le joueur du nombre de cases de ton dé
+            j1.avancer(de);//permet d'avancer le joueur du nombre de cases de ton dé
             System.out.println(plateau1.plateau.get(j1.position));
             if (plateau1.plateau.get(j1.position) instanceof Malus) {//si l'event est un malus
 
@@ -57,7 +57,7 @@ public class Jeu implements Listevent {
 
             }
         }
-        if (j1.getNbPt() >= 10) {
+        if (j1.getNbpoints() >= 10) {
             System.out.println("Vous avez remporté la partie! Le précieux diplôme est entre vos main!");
         } else {
             System.out.println("Vous n'avez pas 10 de moyenne, vous redoublez ");
