@@ -5,7 +5,12 @@
 package gamejamjeuoie;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -15,6 +20,7 @@ import javax.swing.SwingConstants;
  */
 public class FrameJeuOieIdmc extends javax.swing.JFrame {
     JLabel[][] plateau=new JLabel[4][9];
+    Image imageResize;
     /**
      * Creates new form FrameJeuOieIdmc
      */
@@ -54,6 +60,15 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 // on change la bordure en noir avec la méthode setBorder de la classe JComponent qui est extends par la classe JLabel 
             }
 
+        }
+        BufferedImage image = null;
+        try{
+          image = ImageIO.read(new File(".\\eleve.jfif"));
+                 imageResize = image.getScaledInstance(plateau[0][1].getWidth(), plateau[0][1].getHeight(), Image.SCALE_SMOOTH);
+        plateau[0][1].setIcon(new ImageIcon(imageResize));
+        }
+        catch(Exception e){
+            System.out.println("mauvaise image ");
         }
     }
 
