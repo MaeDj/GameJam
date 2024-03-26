@@ -12,7 +12,7 @@ public class Plateau implements Listevent{
 
     public Plateau() { //initialisation du plateau
         for(int i=0;i<32;i++){
-        plateau.add(listevent.get(i));
+        plateau.add(tabEvent[i]);
                 }
     }
     
@@ -24,8 +24,20 @@ public class Plateau implements Listevent{
             }
         return s;
     }
-    
-    public void Tour(){ //méthode pour faire passer un tour au joueur
-        joueur.subitUnEvenement(plateau.get(joueur.getPosition()));
+
+    public ArrayList<Evenement> getPlateau() {
+        return plateau;
+    }
+
+    public Joueur getJoueur() {
+        return joueur;
+    }
+
+    public void setPlateau(ArrayList<Evenement> plateau) {
+        this.plateau = plateau;
+    }
+
+    public void setJoueur(Joueur joueur) {
+        this.joueur = joueur;
     }
 }

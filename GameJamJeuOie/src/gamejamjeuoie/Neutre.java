@@ -4,8 +4,8 @@
  */
 package gamejamjeuoie;
 
-/**
- *
+
+
  * @author Elève
  */
 public class Neutre extends Evenement {
@@ -17,4 +17,5 @@ public class Neutre extends Evenement {
     void declencher() {
         System.out.println("C'est un événement neutre : " + nom);
     }
+
 }

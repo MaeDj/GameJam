@@ -30,6 +30,20 @@ public class Joueur {
         return aUnBonus;
     }
 
+    public void setNbpoints(int nbpoints) {
+        this.nbpoints = nbpoints;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public void setaUnBonus(boolean aUnBonus) {
+        this.aUnBonus = aUnBonus;
+    }
+    
+    
+
     public void subitUnEvenement(Evenement event){ //méthode pour appliquer un evenement au joueur
         if(event instanceof Plus)
             this.aUnBonus=true;
