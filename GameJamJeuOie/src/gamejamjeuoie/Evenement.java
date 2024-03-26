@@ -6,8 +6,15 @@ package gamejamjeuoie;
 
 /**
  *
+
  * @author mae
  */
-public abstract class Evenement {
-    protected String nom;
+
+
+    public Evenement(String nom) {
+        this.nom = nom;
+    }
+
+    public abstract String toString();
+
 }
