@@ -23,7 +23,7 @@ public class Neutre extends Evenement {
         Random rand = new Random();
         int choix = rand.nextInt(nomsNeutres.size());
         String nomNeutre = nomsNeutres.get(choix);
-        
+        super.nom=nomNeutre;
     }
 
    
