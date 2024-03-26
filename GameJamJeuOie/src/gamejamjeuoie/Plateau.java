@@ -7,13 +7,18 @@ package gamejamjeuoie;
 import java.util.ArrayList;
 
 public class Plateau implements Listevent{
+    ArrayList<Evenement> temp = new ArrayList<>();
     ArrayList<Evenement> plateau=new ArrayList<>();
     ArrayList<String> questionDejaPose=new ArrayList<>();
 
     public Plateau() { //initialisation du plateau
+        for(int i=0;i<tabEvent.length;i++){
+            temp.add(tabEvent[i]);
+        }
         for(int i=0;i<32;i++){
             int alea = (int) (Math.random()*36);
-        plateau.add(tabEvent[alea]);
+        plateau.add(temp.get(alea));
+        temp.remove(alea);
                 }
         ArrayList<Question> questionDejaPose = new ArrayList<Question>();
     }
@@ -28,9 +33,5 @@ public class Plateau implements Listevent{
     
     public Evenement get(int pos){
     return plateau.get(pos);
-    }
-    
-    public boolean verifQuestion(String question){
-        return(questionDejaPose.contains(question));
     }
 }

@@ -44,11 +44,8 @@ public class Jeu implements Listevent {
                     Bonus bonus = (Bonus) plateau1.get(j1.getPosition());
                     System.out.println(bonus);
                     j1.setNbPt(j1.getNbPt() + (bonus.points));// on ajoute au joueur son nb de points 
-                /*} else if (plateau1.get(j1.getPosition()) instanceof Question) {// si l'event est une question
+                } else if (plateau1.get(j1.getPosition()) instanceof Question) {// si l'event est une question
                     Question question = (Question) plateau1.get(j1.getPosition());
-                    while (!plateau1.verifQuestion(question.nom)) {
-                        question = (Question) plateau1.get(j1.getPosition());
-                    }
                     int nbPtGagneOuPerdu = question.poserQuestion();//on récupère avec la méthode posé question le nb de points gagnés ou perdus pour le joueur 
                 if (j1.isaUnBonus() && nbPtGagneOuPerdu > 0) {
                     System.out.println("Grace à votre précédente action vous remportez un point de plus à la question ");
@@ -56,7 +53,7 @@ public class Jeu implements Listevent {
                     j1.setaUnBonus(false);
                 } else {
                     j1.setNbPt(j1.getNbPt() + nbPtGagneOuPerdu);// nombre positif ou négatif 
-                }*/
+                }
 
                 } else if (plateau1.get(j1.getPosition()) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
 
@@ -67,8 +64,10 @@ public class Jeu implements Listevent {
                 }
                 if(j1.getNbPt()<0)
                     j1.setNbPt(0);
+                if(j1.getNbPt()>20)
+                    j1.setNbPt(20);
             }
-            System.out.println("Vous avez "+j1.getNbpoints()+" points");
+            System.out.println("Vous avez "+j1.getNbPt()+" points");
             if (j1.getNbPt() >= 10)
                 System.out.println("Bravo " + j1.getNom() + " ! Vous avez remporté la partie! Le précieux diplôme est entre vos main!");
             else 

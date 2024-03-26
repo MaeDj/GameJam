@@ -43,10 +43,6 @@ public class Joueur {
         this.aUnBonus = aUnBonus;
     }
 
-    public int getNbpoints() {
-        return nbpoints;
-    }
-
     public void setNbPt(int nbpoints) {
         this.nbpoints = nbpoints;
     }
