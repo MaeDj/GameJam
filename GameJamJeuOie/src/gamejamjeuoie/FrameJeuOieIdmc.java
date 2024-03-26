@@ -26,24 +26,126 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        question = new javax.swing.JFrame();
+        questionAPoser = new javax.swing.JLabel();
+        rep1 = new javax.swing.JButton();
+        rep2 = new javax.swing.JButton();
+        rep3 = new javax.swing.JButton();
+        mise = new javax.swing.JFrame();
+        miseLabel = new javax.swing.JLabel();
+        label1 = new javax.swing.JButton();
+        label2 = new javax.swing.JButton();
+        label3 = new javax.swing.JButton();
         infos = new javax.swing.JLabel();
         nbPoint = new javax.swing.JLabel();
+        de = new javax.swing.JButton();
+
+        questionAPoser.setText("Question à poser");
+
+        rep1.setText("rep1");
+
+        rep2.setText("rep2");
+        rep2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rep2ActionPerformed(evt);
+            }
+        });
+
+        rep3.setText("rep3");
+
+        javax.swing.GroupLayout questionLayout = new javax.swing.GroupLayout(question.getContentPane());
+        question.getContentPane().setLayout(questionLayout);
+        questionLayout.setHorizontalGroup(
+            questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(questionLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(questionAPoser, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(rep1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rep2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rep3, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)))
+                .addContainerGap(227, Short.MAX_VALUE))
+        );
+        questionLayout.setVerticalGroup(
+            questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(questionLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(questionAPoser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(rep1)
+                .addGap(39, 39, 39)
+                .addComponent(rep2)
+                .addGap(46, 46, 46)
+                .addComponent(rep3)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+
+        miseLabel.setText("Quelle mise souhaitez vous tenter?");
+
+        label1.setText("1");
+
+        label2.setText("2");
+
+        label3.setText("3");
+
+        javax.swing.GroupLayout miseLayout = new javax.swing.GroupLayout(mise.getContentPane());
+        mise.getContentPane().setLayout(miseLayout);
+        miseLayout.setHorizontalGroup(
+            miseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, miseLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(miseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(98, 98, 98))
+            .addGroup(miseLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
+        );
+        miseLayout.setVerticalGroup(
+            miseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(miseLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(miseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addGroup(miseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(119, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        infos.setText("jLabel1");
+        infos.setText("Infos");
 
-        nbPoint.setText("jLabel2");
+        nbPoint.setText("pt");
+
+        de.setText("lancer le dé");
+        de.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(de)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -53,11 +155,21 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addComponent(de)
+                .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deActionPerformed
+
+    private void rep2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rep2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,7 +207,18 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton de;
     private javax.swing.JLabel infos;
+    private javax.swing.JButton label1;
+    private javax.swing.JButton label2;
+    private javax.swing.JButton label3;
+    private javax.swing.JFrame mise;
+    private javax.swing.JLabel miseLabel;
     private javax.swing.JLabel nbPoint;
+    private javax.swing.JFrame question;
+    private javax.swing.JLabel questionAPoser;
+    private javax.swing.JButton rep1;
+    private javax.swing.JButton rep2;
+    private javax.swing.JButton rep3;
     // End of variables declaration//GEN-END:variables
 }
