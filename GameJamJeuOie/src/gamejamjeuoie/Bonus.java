@@ -6,7 +6,7 @@
 import java.util.Random;
 
 public class Bonus extends Evenement {
-    String phraseAleatoire;
+    
     int points;
 
     public Bonus(String nom) {
@@ -14,7 +14,7 @@ public class Bonus extends Evenement {
         Random rand = new Random();
         int choix = rand.nextInt(4);
         if (choix == 0) {
-            phraseAleatoire = "Tres bien, vous maitrisez votre cours ! ";
+             = "Tres bien, vous maitrisez votre cours ! ";
             points = 2;
         } else if (choix == 1) {
             phraseAleatoire = "Super, vous etes toujours present en cours ! ";
@@ -30,6 +30,6 @@ public class Bonus extends Evenement {
 
     @Override
     public String toString() {
-        return "" + phraseAleatoire  + nom + " +" + points + " points ."; 
+        return "" +super.nom + " +" + points + " points ."; 
     }
 }
