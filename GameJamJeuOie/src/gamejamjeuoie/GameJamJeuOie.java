@@ -8,7 +8,6 @@ package gamejamjeuoie;
  *
  * @author mae
  */
-public class GameJamJeuOie {
-    
-    
+public abstract class GameJamJeuOie {
+    abstract void excuter();
 }
