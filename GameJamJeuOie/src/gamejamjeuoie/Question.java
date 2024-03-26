@@ -11,7 +11,8 @@ public class Question extends Evenement {
     private String[] reponse;
 
 
-    public Question() {
+    public Question(int nb) {
+        //questions.clear();
         String[] test1 = {"Analyse:Quelle est la dérivée de ln(x) ?", "1) 1/x", "2) 42", "3) f(x)", "1"};
         questions.add(test1);
 
@@ -42,13 +43,12 @@ public class Question extends Evenement {
         String[] test10 = {"Culture générale: Quelle est la monnaie de Nancy?", "1) Le florain", "2) l'euro", "3)Le dollar", "1"};
         questions.add(test10);
 
-        for (int i = 0; i < 10; i++) {
-            Random ra = new Random();
-            int rep = ra.nextInt(9) + 1;
-            super.nom = questions.get(rep)[0];
-            this.reponse = questions.get(rep);
+        
+           
+            super.nom = questions.get(nb)[0];
+            this.reponse = questions.get(nb);
 
-        }
+        
     }
 
     public int poserQuestion() {
