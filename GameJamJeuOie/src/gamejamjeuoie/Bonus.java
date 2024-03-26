@@ -29,6 +29,6 @@ public class Bonus extends Evenement {
 
     @Override
     public String toString() {
-        return "" +super.nom + " +" + points + " points ."; 
+        return "" + super.nom + " +" + points + " points ."; 
     }
 }
