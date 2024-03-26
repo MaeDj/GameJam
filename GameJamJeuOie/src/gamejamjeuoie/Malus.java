@@ -13,22 +13,21 @@ import java.util.Random;
 public class Malus extends Evenement {
     int points;
 
-    public Malus(String nom) {
-        super(nom);
+    public Malus() {
         Random rand = new Random();
         int choix = rand.nextInt(4);
         if (choix == 0) {
-           super.nom= "Tres bien, vous maitrisez votre cours ! ";
-            points = 2;
+           super.nom= " Ah Zut!, Vous êtes arrivé en retard au cours ! ";
+            points = -2;
         } else if (choix == 1) {
-           super.nom = "Super, vous etes toujours present en cours ! ";
-            points = 1;
+           super.nom = " Vous n'avez pas  fait vos exercices ! ";
+            points = -3;
         } else if(choix==2){
-            super.nom = "Excellent, vous avez reussi votre semestre ! ";
-            points = 5;
+            super.nom = " Vous êtiez absent au cours  ";
+            points = -5;
         }else{
-            super.nom= "Bravo, vous avez participe à la GameJam ! ";
-            points = 3;
+            super.nom= "Oups, vous avez redoublé  ! ";
+            points = -100;
         }
     }
 
