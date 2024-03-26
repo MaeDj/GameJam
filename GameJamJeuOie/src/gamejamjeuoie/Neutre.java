@@ -8,13 +8,13 @@ package gamejamjeuoie;
  *
  * @author Elève
  */
-public abstract class Evenement {
-    String nom;
-
-    public Evenement(String nom) {
-        this.nom = nom;
+public class Neutre extends Evenement {
+    public Neutre(String nom){
+        super(nom);
     }
 
-    public abstract String toString();
-
+    @Override
+    void declencher() {
+        System.out.println("C'est un événement neutre : " + nom);
+    }
 }
