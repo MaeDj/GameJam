@@ -8,8 +8,8 @@ package gamejamjeuoie;
  *
  * @author Junior
  */
-public class Evenement {
-        String nom;
+public abstract class Evenement {
+    String nom;
 
     public Evenement(String nom) {
         this.nom = nom;
