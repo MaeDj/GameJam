@@ -10,7 +10,7 @@ import java.util.Random;
  *
  * @author Elève
  */
-public class Malus {
+public class Malus extends Evenement {
     String phraseAleatoire;
     int points;
 
