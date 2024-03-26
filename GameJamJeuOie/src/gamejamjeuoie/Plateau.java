@@ -16,11 +16,10 @@ public class Plateau implements Listevent{
             temp.add(tabEvent[i]);
         }
         for(int i=0;i<32;i++){
-            int alea = (int) (Math.random()*36);
+            int alea = (int) (Math.random()*temp.size());
         plateau.add(temp.get(alea));
         temp.remove(alea);
                 }
-        ArrayList<Question> questionDejaPose = new ArrayList<Question>();
     }
 
     public ArrayList<Evenement> getPlateau() {

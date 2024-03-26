@@ -64,7 +64,7 @@ public class Question extends Evenement {
                 niv = lecture.nextInt();
                 if (niv == 1 || niv == 2 || niv == 3) {
                     System.out.println("We get your bet!!");
-                    test = true;
+                    test1 = true;
                 } else {
                     System.out.println("Mise non conforme!!");
                 }
@@ -77,14 +77,17 @@ public class Question extends Evenement {
         while (!test) {
             try {
                 System.out.println(nom);
-                String response = lecture.nextLine();
+                System.out.println(reponse[1]+" "+reponse[2]+" "+reponse[3]);
+                String response = lecture.next();
                 if (Integer.parseInt(response) == 1 || Integer.parseInt(response) == 2 || Integer.parseInt(response) == 3) {
                     if (Integer.parseInt(reponse[4]) == Integer.parseInt(response)) {
                         points = niv;
                         test = true;
-                    } else {
+                        System.out.println("Réussi, +"+niv);
+                    } else if(Integer.parseInt(reponse[4]) != Integer.parseInt(response)){
                         points = -niv;
                         test = true;
+                        System.out.println("Raté, -"+niv);
                     }
                 }
             } catch (Exception e) {
