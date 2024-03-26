@@ -6,8 +6,10 @@ import java.util.Scanner;
 
 public class Question extends Evenement {
 
+
     private ArrayList<String[]> questions=new ArrayList<>();
     private String[] reponse;
+
 
     public Question() {
         String[] test1 = {"Analyse:Quelle est la dérivée de ln(x) ?", "1) 1/x", "2) 42", "3) f(x)", "1"};

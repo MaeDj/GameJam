@@ -7,24 +7,15 @@ package gamejamjeuoie;
 import java.util.ArrayList;
 
 public class Plateau implements Listevent{
-    ArrayList<Evenement> plateau;
-    ArrayList<String> questionDejaPose;
+    ArrayList<Evenement> plateau=new ArrayList<>();
+    ArrayList<String> questionDejaPose=new ArrayList<>();
 
     public Plateau() { //initialisation du plateau
         for(int i=0;i<32;i++){
-            int alea = (int) Math.random()*45;
+            int alea = (int) (Math.random()*36);
         plateau.add(tabEvent[alea]);
                 }
         ArrayList<Question> questionDejaPose = new ArrayList<Question>();
-    }
-    
-    @Override
-    public String toString(){ //méthode pour afficher le plateau
-        String s = plateau.get(0).toString();
-        for(int i=1;i<32;i++){
-            s=s.concat(plateau.get(i).toString());
-            }
-        return s;
     }
 
     public ArrayList<Evenement> getPlateau() {
