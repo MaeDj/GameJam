@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class Plateau implements Listevent{
     ArrayList<Evenement> plateau;
-    Joueur joueur = new Joueur();
 
     public Plateau() { //initialisation du plateau
         for(int i=0;i<32;i++){
@@ -28,16 +27,12 @@ public class Plateau implements Listevent{
     public ArrayList<Evenement> getPlateau() {
         return plateau;
     }
-
-    public Joueur getJoueur() {
-        return joueur;
-    }
-
+    
     public void setPlateau(ArrayList<Evenement> plateau) {
         this.plateau = plateau;
     }
-
-    public void setJoueur(Joueur joueur) {
-        this.joueur = joueur;
+    
+    public Evenement get(int pos){
+    return plateau.get(pos);
     }
 }

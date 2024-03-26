@@ -41,12 +41,12 @@ public class Jeu implements Listevent {
             } else if (plateau1.plateau.get(j1.position) instanceof Question) {// si l'event est une question
                 Question question = (Question) plateau1.plateau.get(j1.position);
                 int nbPtGagneOuPerdu = question.poserQuestion();//on récupère avec la méthode posé question le nb de points gagnés ou perdus pour le joueur 
-                if (j1.ptPlus && nbPtGagneOuPerdu > 0) {
+                if (j1.isaUnBonus() && nbPtGagneOuPerdu > 0) {
                     System.out.println("Grace à votre précédente action vous remportez un point de plus à la question ");
-                    j1.setnbPt(j1.getNbPt() + nbPtGagneOuPerdu + 1);
-                    j1.ptPlus = false;
+                    j1.setNbPt(j1.getNbPt() + nbPtGagneOuPerdu + 1);
+                    j1.setaUnBonus(false);
                 } else {
-                    j1.setnbPt(j1.getNbPt() + nbPtGagneOuPerdu);// nombre positif ou négatif 
+                    j1.setNbPt(j1.getNbPt() + nbPtGagneOuPerdu);// nombre positif ou négatif 
                 }
 
             } else if (plateau1.plateau.get(j1.position) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
