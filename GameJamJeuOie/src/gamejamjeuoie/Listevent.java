@@ -10,5 +10,5 @@ package gamejamjeuoie;
  * @author mae
  */
 public interface Listevent {
-    
+    private final Evenement[] tabEvent={};
 }
