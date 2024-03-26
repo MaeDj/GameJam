@@ -12,5 +12,8 @@ import java.util.ArrayList;
  * @author mae
  */
 public interface Listevent {
-    public ArrayList<Evenement> listevent = new ArrayList<Evenement>();
+<<<<<<< HEAD
+=======
+    private final Evenement[] tabEvent={};
+>>>>>>> f81627364c5629fae651fab28cc035ba761f1bb7
 }
