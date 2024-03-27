@@ -26,7 +26,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     Image imageResizeLivre;
     Jeu jeu1 = new Jeu();
     int miseDuJoueur;
-    boolean resultat;
+    boolean resultat,reponseRecommencer;
 
     /**
      * Creates new form FrameJeuOieIdmc
@@ -145,6 +145,10 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         label1 = new javax.swing.JButton();
         label2 = new javax.swing.JButton();
         label3 = new javax.swing.JButton();
+        recommencer = new javax.swing.JFrame();
+        labelRecommencerPartie = new javax.swing.JLabel();
+        recommenceroui = new javax.swing.JButton();
+        recommencernon = new javax.swing.JButton();
         panel1 = new java.awt.Panel();
         deFrame = new javax.swing.JButton();
         infos = new javax.swing.JLabel();
@@ -290,6 +294,54 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                     .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(119, Short.MAX_VALUE))
+        );
+
+        labelRecommencerPartie.setText("Voulez-vous recommencer ?");
+
+        recommenceroui.setText("Oui");
+        recommenceroui.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recommencerouiMouseClicked(evt);
+            }
+        });
+        recommenceroui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recommencerouiActionPerformed(evt);
+            }
+        });
+
+        recommencernon.setText("Non");
+        recommencernon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                recommencernonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout recommencerLayout = new javax.swing.GroupLayout(recommencer.getContentPane());
+        recommencer.getContentPane().setLayout(recommencerLayout);
+        recommencerLayout.setHorizontalGroup(
+            recommencerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(recommencerLayout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(labelRecommencerPartie)
+                .addContainerGap(126, Short.MAX_VALUE))
+            .addGroup(recommencerLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(recommenceroui)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(recommencernon)
+                .addGap(59, 59, 59))
+        );
+        recommencerLayout.setVerticalGroup(
+            recommencerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(recommencerLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(labelRecommencerPartie)
+                .addGap(82, 82, 82)
+                .addGroup(recommencerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(recommenceroui)
+                    .addComponent(recommencernon))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -457,6 +509,21 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
       this.jeuFrame();
     }//GEN-LAST:event_newGameMouseClicked
 
+    private void recommencerouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommencerouiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recommencerouiActionPerformed
+
+    private void recommencerouiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recommencerouiMouseClicked
+        // TODO add your handling code here:
+        reponseRecommencer=true;
+    }//GEN-LAST:event_recommencerouiMouseClicked
+
+    private void recommencernonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recommencernonMouseClicked
+        // TODO add your handling code here:
+        reponseRecommencer=false;
+    }//GEN-LAST:event_recommencernonMouseClicked
+
+
     public void PoserQuestionFrame() {
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
         questionAPoser.setText(event.getReponse()[0]);
@@ -601,6 +668,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private javax.swing.JButton label1;
     private javax.swing.JButton label2;
     private javax.swing.JButton label3;
+    private javax.swing.JLabel labelRecommencerPartie;
     private javax.swing.JFrame mise;
     private javax.swing.JLabel miseLabel;
     private javax.swing.JLabel nbPoint;
@@ -609,6 +677,9 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private javax.swing.JFrame question;
     private javax.swing.JLabel questionAPoser;
     private javax.swing.JButton quit;
+    private javax.swing.JFrame recommencer;
+    private javax.swing.JButton recommencernon;
+    private javax.swing.JButton recommenceroui;
     private javax.swing.JButton rep1;
     private javax.swing.JButton rep2;
     private javax.swing.JButton rep3;
