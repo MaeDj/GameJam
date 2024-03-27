@@ -507,14 +507,14 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
         question.setVisible(false);
         this.setVisible(true);
-        deFrame.setEnabled(true);
+        deFrame.setVisible(true);
 
     }//GEN-LAST:event_quitMouseClicked
 
     private void newGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newGameMouseClicked
         // TODO add your handling code here:  
         new FrameJeuOieIdmc().setVisible(true);
-        deFrame.setEnabled(true);
+        this.deFrame.setVisible(true);
         infos.setText("Veuillez lancer le dé ");
        
     }//GEN-LAST:event_newGameMouseClicked
