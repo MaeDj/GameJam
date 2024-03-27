@@ -56,7 +56,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                     BufferedImage image1 = null;
                     try {
                         image1 = ImageIO.read(new File(".\\livre.jfif"));
-                        imageResizeLivre= image1.getScaledInstance(plateauFrame.get(0).getWidth() + 10, plateauFrame.get(0).getHeight(), Image.SCALE_SMOOTH);
+                        imageResizeLivre = image1.getScaledInstance(plateauFrame.get(0).getWidth() + 10, plateauFrame.get(0).getHeight(), Image.SCALE_SMOOTH);
                         plateauFrame.get(i).setIcon(new ImageIcon(imageResizeLivre));
                     } catch (Exception e) {
                         System.out.println("mauvaise imageLivre ");
@@ -146,7 +146,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         label2 = new javax.swing.JButton();
         label3 = new javax.swing.JButton();
         panel1 = new java.awt.Panel();
-        de = new javax.swing.JButton();
+        deFrame = new javax.swing.JButton();
         infos = new javax.swing.JLabel();
         nbPoint = new javax.swing.JLabel();
 
@@ -292,10 +292,10 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        de.setText("lancer le dé");
-        de.addActionListener(new java.awt.event.ActionListener() {
+        deFrame.setText("lancer le dé");
+        deFrame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deActionPerformed(evt);
+                deFrameActionPerformed(evt);
             }
         });
 
@@ -316,7 +316,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                         .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panel1Layout.createSequentialGroup()
                         .addGap(364, 364, 364)
-                        .addComponent(de)))
+                        .addComponent(deFrame)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
@@ -330,7 +330,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, Short.MAX_VALUE)
-                .addComponent(de)
+                .addComponent(deFrame)
                 .addGap(63, 63, 63))
         );
 
@@ -354,9 +354,9 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void deActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deActionPerformed
+    private void deFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deFrameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_deActionPerformed
+    }//GEN-LAST:event_deFrameActionPerformed
 
     private void rep2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep2ActionPerformed
         // TODO add your handling code here:
@@ -384,13 +384,12 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private void rep1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rep1MouseClicked
         // TODO add your handling code here:
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
-        if(event.getReponse()[4]=="1"){
+        if (event.getReponse()[4] == "1") {
             resultatQuestion.setText("Bravo !");
-            resultat=true;
-        }
-        else{
+            resultat = true;
+        } else {
             resultatQuestion.setText("Raté !");
-            resultat=false;
+            resultat = false;
         }
         rep1.setEnabled(false);
         rep2.setEnabled(false);
@@ -401,13 +400,12 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private void rep2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rep2MouseClicked
         // TODO add your handling code here:
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
-        if(event.getReponse()[4]=="2"){
+        if (event.getReponse()[4] == "2") {
             resultatQuestion.setText("Bravo !");
-            resultat=true;
-        }
-        else{
+            resultat = true;
+        } else {
             resultatQuestion.setText("Raté !");
-            resultat=false;
+            resultat = false;
         }
         rep1.setEnabled(false);
         rep2.setEnabled(false);
@@ -418,13 +416,12 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private void rep3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rep3MouseClicked
         // TODO add your handling code here:
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
-        if(event.getReponse()[4]=="3"){
+        if (event.getReponse()[4] == "3") {
             resultatQuestion.setText("Bravo !");
-            resultat=true;
-        }
-        else{
+            resultat = true;
+        } else {
             resultatQuestion.setText("Raté !");
-            resultat=false;
+            resultat = false;
         }
         rep1.setEnabled(false);
         rep2.setEnabled(false);
@@ -442,7 +439,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         question.setEnabled(false);
     }//GEN-LAST:event_quitMouseClicked
 
-    public void PoserQuestionFrame(){
+    public void PoserQuestionFrame() {
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
         questionAPoser.setText(event.getReponse()[0]);
         rep1.setText(event.getReponse()[1]);
@@ -450,6 +447,99 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         rep3.setText(event.getReponse()[3]);
         quit.setEnabled(false);
     }
+
+    public void jeuFrame() {
+        boolean recommencer = true;
+        while (recommencer) {
+            infos.setText("----début de la partie----");
+            jeu1.j1 = new Joueur();
+            jeu1.j1.setNbPt(0);
+            jeu1.j1.setPosition(0);
+            plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
+
+            int i = 0;
+            while (i < jeu1.plateau1.plateau.size()) {
+                deFrame.setEnabled(true);
+                if (!deFrame.isEnabled()) {
+                    plateauFrame.get(jeu1.j1.getPosition()).setIcon(null);
+
+                    jeu1.j1.avancer(jeu1.de);//permet d'avancer le joueur du nombre de cases de ton dé
+                    plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
+                    i += jeu1.de;
+                    if (i >= jeu1.plateau1.plateau.size()) {
+                        break;
+                    }
+                    if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Malus) {//si l'event est un malus
+
+                        Malus malus = (Malus) jeu1.plateau1.get(jeu1.j1.getPosition());
+                        System.out.println(malus);
+                        jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (malus.points));
+                        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+                    } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Bonus) {// si l'event est un bonus 
+
+                        Bonus bonus = (Bonus) jeu1.plateau1.get(jeu1.j1.getPosition());
+                        System.out.println(bonus);
+                        jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));// on ajoute au joueur son nb de points 
+                        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+                    } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Question) {// si l'event est une question
+                        Question question1 = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
+                        int nbPtGagneOuPerdu;
+                        mise.setVisible(true);
+                        question.setVisible(true);
+                        if (resultat) {
+                            nbPtGagneOuPerdu = miseDuJoueur;
+                        } else {
+                            nbPtGagneOuPerdu = -miseDuJoueur;
+                        }
+                        if (jeu1.j1.isaUnBonus() && nbPtGagneOuPerdu > 0) {
+                            System.out.println("Grace à votre précédente action vous remportez un point de plus à la question ");
+                            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + nbPtGagneOuPerdu + 1);
+                            jeu1.j1.setaUnBonus(false);
+                        } else {
+                            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + nbPtGagneOuPerdu);// nombre positif ou négatif 
+                        }
+                        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+
+                    } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
+
+                        Plus plus = (Plus) jeu1.plateau1.get(jeu1.j1.getPosition());
+                        System.out.println(plus);
+                        jeu1.j1.setaUnBonus(true);//change le booleen de joueur en true 
+
+                    }
+                    if (jeu1.j1.getNbPt() < 0) {
+                        jeu1.j1.setNbPt(0);
+                        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+                    }
+                    if (jeu1.j1.getNbPt() > 20) {
+                        jeu1.j1.setNbPt(20);
+                        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+                    }
+                }
+                infos.setText("Vous avez " + jeu1.j1.getNbPt() + " points");
+                if (jeu1.j1.getNbPt() >= 10) {
+                    infos.setText("Bravo " + jeu1.j1.getNom() + " ! Vous avez remporté la partie! Le précieux diplôme est entre vos main!");
+                } else {
+                    infos.setText("Vous n'avez pas 10 de moyenne, vous redoublez ");
+                }
+                try {
+
+                    labelRecommencerPartie.setText("Voulez vous redoubler ou changer d'établissement ? ");//recommencer la partie 
+                    if (reponseRecommencer) {
+                        recommencer = true;
+                        jeu1 = new Jeu();
+                    } else {
+                        panel1.setVisible(false);
+                        System.exit(0);
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("L'administration et Mme Besse ne comprend pas votre requête, veuillez recommencer");
+                }
+            }
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -476,17 +566,18 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrameJeuOieIdmc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrameJeuOieIdmc().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton de;
+    private javax.swing.JButton deFrame;
     private javax.swing.JLabel infos;
     private javax.swing.JButton label1;
     private javax.swing.JButton label2;

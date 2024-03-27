@@ -227,7 +227,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="364" max="-2" attributes="0"/>
-                          <Component id="de" min="-2" max="-2" attributes="0"/>
+                          <Component id="deFrame" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="31" max="32767" attributes="0"/>
@@ -248,19 +248,19 @@
                       </Group>
                   </Group>
                   <EmptySpace pref="556" max="32767" attributes="0"/>
-                  <Component id="de" min="-2" max="-2" attributes="0"/>
+                  <Component id="deFrame" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="de">
+        <Component class="javax.swing.JButton" name="deFrame">
           <Properties>
             <Property name="text" type="java.lang.String" value="lancer le d&#xe9;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deFrameActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="infos">
