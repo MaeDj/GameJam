@@ -47,6 +47,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="rep1"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rep1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="rep2">
           <Properties>
@@ -110,16 +113,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="1"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="label1MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="label2">
           <Properties>
             <Property name="text" type="java.lang.String" value="2"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="label2MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="label3">
           <Properties>
             <Property name="text" type="java.lang.String" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="label3MouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

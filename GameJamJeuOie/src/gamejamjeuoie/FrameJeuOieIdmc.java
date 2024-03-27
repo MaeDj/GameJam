@@ -24,6 +24,8 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     ArrayList<JLabel> plateauFrame = new ArrayList<>();
     Image imageResize;
     Jeu jeu1 = new Jeu();
+    int miseDuJoueur;
+
 
     /**
      * Creates new form FrameJeuOieIdmc
@@ -136,6 +138,11 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         questionAPoser.setText("Question à poser");
 
         rep1.setText("rep1");
+        rep1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rep1ActionPerformed(evt);
+            }
+        });
 
         rep2.setText("rep2");
         rep2.addActionListener(new java.awt.event.ActionListener() {
@@ -177,10 +184,25 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         miseLabel.setText("Quelle mise souhaitez vous tenter?");
 
         label1.setText("1");
+        label1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label1MouseClicked(evt);
+            }
+        });
 
         label2.setText("2");
+        label2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label2MouseClicked(evt);
+            }
+        });
 
         label3.setText("3");
+        label3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                label3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout miseLayout = new javax.swing.GroupLayout(mise.getContentPane());
         mise.getContentPane().setLayout(miseLayout);
@@ -283,6 +305,25 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private void rep2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rep2ActionPerformed
+
+    private void label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label1MouseClicked
+        // TODO add your handling code here:
+        this.miseDuJoueur=Integer.parseInt(label1.getText());
+    }//GEN-LAST:event_label1MouseClicked
+
+    private void label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label2MouseClicked
+        // TODO add your handling code here:
+        this.miseDuJoueur=Integer.parseInt(label2.getText());
+    }//GEN-LAST:event_label2MouseClicked
+
+    private void label3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label3MouseClicked
+        // TODO add your handling code here:
+        this.miseDuJoueur=Integer.parseInt(label3.getText());
+    }//GEN-LAST:event_label3MouseClicked
+
+    private void rep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rep1ActionPerformed
 
     /**
      * @param args the command line arguments
