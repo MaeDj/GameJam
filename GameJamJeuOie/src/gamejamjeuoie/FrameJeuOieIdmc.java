@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -19,55 +20,87 @@ import javax.swing.SwingConstants;
  * @author mae
  */
 public class FrameJeuOieIdmc extends javax.swing.JFrame {
-    JLabel[][] plateau=new JLabel[4][9];
+
+    ArrayList<JLabel> plateauFrame = new ArrayList<>();
     Image imageResize;
+    
+
     /**
      * Creates new form FrameJeuOieIdmc
      */
     public FrameJeuOieIdmc() {
         initComponents();
-         int Horiz, Vert;
-        Horiz = 100;
+        int Horiz, Vert;
+        Horiz = 170;
         Vert = 150;
-        int comp=0;
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 9; j++) { // on créé notre plateau
+       
+        for (int i = 0; i < 33; i++) { // on créé notre plateau
 
-               plateau[i][j] = new JLabel();
-               if(j==0){
-                   plateau[i][j].setText("=>");
-               }
-               else{
-                   comp=comp+1;
-                   plateau[i][j].setText(String.valueOf(comp));
-               }
-
-                plateau[i][j].setLocation(Horiz, Vert);// on pose le Jlabel à 300px à l'horizontal et à 300 px à la verticale et on avance de 70 px à chaque label vers la droite 
-
-                plateau[i][j].setSize(70, 70);
-
-                panel1.add(plateau[i][j]);
-                Horiz = Horiz + 70;
-                panel1.repaint();
-                if (j == 8) { // des qu'on arrive en bout de ligne on descend de 70 px aussi pour rester proportionnel
-                    Vert = Vert + 70;
-                    Horiz = 100;
-                }
-                plateau[i][j].setVerticalAlignment(SwingConstants.CENTER);// affiche le texte au milieu de la case 
-                plateau[i][j].setHorizontalAlignment(SwingConstants.CENTER);
-                // code inspiré de https://stackoverflow.com/questions/39798401/how-to-make-a-border-fit-around-a-jlabel
-                plateau[i][j].setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.BLACK));
-                // on change la bordure en noir avec la méthode setBorder de la classe JComponent qui est extends par la classe JLabel 
+            plateauFrame.add(i, new JLabel());
+            if (i == 32) {
+                plateauFrame.get(i).setText("Diplôme!!!");
+            } else {
+               /* if (jeu1.plateau1.plateau.get(i) instanceof Bonus) {
+                    plateauFrame.get(i).setBackground(Color.BLUE);
+                } else if (jeu1.plateau1.plateau.get(i) instanceof Malus) {
+                    PlateauFrame.get(i).setBackground(Color.RED);
+                }*/
+                plateauFrame.get(i).setText(String.valueOf(i + 1));
             }
 
+            plateauFrame.get(i).setLocation(Horiz, Vert);// on pose le Jlabel à 300px à l'horizontal et à 300 px à la verticale et on avance de 70 px à chaque label vers la droite 
+
+            plateauFrame.get(i).setSize(70, 70);
+
+            panel1.add(plateauFrame.get(i));
+            Horiz = Horiz + 70;
+            panel1.repaint();
+            if (i == 7 || i == 15 || i == 23) { // des qu'on arrive en bout de ligne on descend de 70 px aussi pour rester proportionnel
+                Vert = Vert + 70;
+                Horiz = 170;
+            }
+            plateauFrame.get(i).setVerticalAlignment(SwingConstants.CENTER);// affiche le texte au milieu de la case 
+            plateauFrame.get(i).setHorizontalAlignment(SwingConstants.CENTER);
+            // code inspiré de https://stackoverflow.com/questions/39798401/how-to-make-a-border-fit-around-a-jlabel
+            plateauFrame.get(i).setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.BLACK));
+            // on change la bordure en noir avec la méthode setBorder de la classe JComponent qui est extends par la classe JLabel 
         }
+
+        Horiz = 100;
+        Vert = 150;
+        JLabel[] retourLigne = new JLabel[4];
+        for (int j = 0; j < 4; j++) {
+            retourLigne[j] = new JLabel();
+            if (j == 0) {
+                retourLigne[j].setText("L1=>");
+            } else {
+                retourLigne[j].setText("=>");
+            }
+            retourLigne[j].setLocation(Horiz, Vert);// on pose le Jlabel à 300px à l'horizontal et à 300 px à la verticale et on avance de 70 px à chaque label vers la droite 
+
+            retourLigne[j].setSize(70, 70);
+
+            panel1.add(retourLigne[j]);
+            Horiz = Horiz + 70;
+            panel1.repaint();
+
+            Vert = Vert + 70;
+            Horiz = 100;
+
+            retourLigne[j].setVerticalAlignment(SwingConstants.CENTER);// affiche le texte au milieu de la case 
+            retourLigne[j].setHorizontalAlignment(SwingConstants.CENTER);
+            // code inspiré de https://stackoverflow.com/questions/39798401/how-to-make-a-border-fit-around-a-jlabel
+            retourLigne[j].setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.BLACK));
+            // on change la bordure en noir avec la méthode setBorder de la classe JComponent qui est extends par la classe JLabel 
+
+        }
+
         BufferedImage image = null;
-        try{
-          image = ImageIO.read(new File(".\\eleve.jfif"));
-                 imageResize = image.getScaledInstance(plateau[0][1].getWidth(), plateau[0][1].getHeight(), Image.SCALE_SMOOTH);
-        plateau[0][1].setIcon(new ImageIcon(imageResize));
-        }
-        catch(Exception e){
+        try {
+            image = ImageIO.read(new File(".\\eleve.jfif"));
+            imageResize = image.getScaledInstance(plateauFrame.get(0).getWidth() + 10, plateauFrame.get(0).getHeight(), Image.SCALE_SMOOTH);
+            plateauFrame.get(0).setIcon(new ImageIcon(imageResize));
+        } catch (Exception e) {
             System.out.println("mauvaise image ");
         }
     }
