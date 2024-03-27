@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -26,7 +27,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     Image imageResizeLivre;
     Jeu jeu1 = new Jeu();
     int miseDuJoueur;
-    boolean resultat,reponseRecommencer;
+    boolean resultat, reponseRecommencer;
 
     /**
      * Creates new form FrameJeuOieIdmc
@@ -118,10 +119,16 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         try {
             image = ImageIO.read(new File(".\\eleve.jfif"));
             imageResize = image.getScaledInstance(plateauFrame.get(0).getWidth() + 10, plateauFrame.get(0).getHeight(), Image.SCALE_SMOOTH);
-            plateauFrame.get(0).setIcon(new ImageIcon(imageResize));
         } catch (Exception e) {
             System.out.println("mauvaise image ");
         }
+        infos.setText("----début de la partie----");
+        jeu1.j1 = new Joueur();
+        jeu1.j1.setNbPt(0);
+        jeu1.j1.setPosition(0);
+        plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
+        deFrame.setEnabled(false);
+
     }
 
     /**
@@ -145,14 +152,11 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         label1 = new javax.swing.JButton();
         label2 = new javax.swing.JButton();
         label3 = new javax.swing.JButton();
-        recommencer = new javax.swing.JFrame();
-        labelRecommencerPartie = new javax.swing.JLabel();
-        recommenceroui = new javax.swing.JButton();
-        recommencernon = new javax.swing.JButton();
         panel1 = new java.awt.Panel();
         deFrame = new javax.swing.JButton();
         infos = new javax.swing.JLabel();
         nbPoint = new javax.swing.JLabel();
+        evenementFrame = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         newGame = new javax.swing.JMenu();
 
@@ -194,8 +198,6 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
             }
         });
 
-        resultatQuestion.setText("Bravo/Raté");
-
         quit.setText("Quitter");
         quit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -208,39 +210,49 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         questionLayout.setHorizontalGroup(
             questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(questionLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(questionLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(questionAPoser, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(questionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(rep1, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, questionLayout.createSequentialGroup()
                 .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(quit)
-                    .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(questionAPoser, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(questionLayout.createSequentialGroup()
-                            .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(rep1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rep2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rep3, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
-                            .addGap(18, 18, 18)
-                            .addComponent(resultatQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(questionLayout.createSequentialGroup()
+                        .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, questionLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(rep3, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(rep2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
+                        .addComponent(resultatQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(questionLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(quit)))
+                .addGap(23, 23, 23))
         );
         questionLayout.setVerticalGroup(
             questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(questionLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(questionAPoser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rep1)
+                .addGap(67, 67, 67)
+                .addComponent(questionAPoser, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addComponent(rep1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(questionLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(rep2))
-                    .addGroup(questionLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(rep2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, questionLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(resultatQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19)
-                .addComponent(rep3)
-                .addGap(18, 18, 18)
+                        .addComponent(resultatQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(115, 115, 115)))
+                .addComponent(rep3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(117, 117, 117)
                 .addComponent(quit)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         miseLabel.setText("Quelle mise souhaitez vous tenter?");
@@ -271,82 +283,43 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         miseLayout.setHorizontalGroup(
             miseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, miseLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 261, Short.MAX_VALUE)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(250, 250, 250)
+                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, miseLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(miseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98))
-            .addGroup(miseLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                .addGap(295, 295, 295))
         );
         miseLayout.setVerticalGroup(
             miseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(miseLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(miseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addGroup(miseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(119, Short.MAX_VALUE))
-        );
-
-        labelRecommencerPartie.setText("Voulez-vous recommencer ?");
-
-        recommenceroui.setText("Oui");
-        recommenceroui.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                recommencerouiMouseClicked(evt);
-            }
-        });
-        recommenceroui.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recommencerouiActionPerformed(evt);
-            }
-        });
-
-        recommencernon.setText("Non");
-        recommencernon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                recommencernonMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout recommencerLayout = new javax.swing.GroupLayout(recommencer.getContentPane());
-        recommencer.getContentPane().setLayout(recommencerLayout);
-        recommencerLayout.setHorizontalGroup(
-            recommencerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(recommencerLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(labelRecommencerPartie)
-                .addContainerGap(126, Short.MAX_VALUE))
-            .addGroup(recommencerLayout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(recommenceroui)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(recommencernon)
-                .addGap(59, 59, 59))
-        );
-        recommencerLayout.setVerticalGroup(
-            recommencerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(recommencerLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(labelRecommencerPartie)
-                .addGap(82, 82, 82)
-                .addGroup(recommencerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(recommenceroui)
-                    .addComponent(recommencernon))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addGroup(miseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(miseLayout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addGroup(miseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(miseLayout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(miseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(140, 140, 140)
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(483, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         deFrame.setText("lancer le dé");
+        deFrame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deFrameMouseClicked(evt);
+            }
+        });
         deFrame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deFrameActionPerformed(evt);
@@ -357,6 +330,8 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
 
         nbPoint.setText("pt");
 
+        evenementFrame.setText("jLabel1");
+
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
@@ -364,13 +339,15 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(320, 320, 320)
-                        .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(198, 198, 198)
-                        .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel1Layout.createSequentialGroup()
                         .addGap(364, 364, 364)
-                        .addComponent(deFrame)))
+                        .addComponent(deFrame))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(evenementFrame, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+                            .addComponent(infos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(33, 33, 33)
+                        .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
@@ -383,7 +360,9 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                     .addGroup(panel1Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(evenementFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 550, Short.MAX_VALUE)
                 .addComponent(deFrame)
                 .addGap(63, 63, 63))
         );
@@ -409,10 +388,9 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 20, Short.MAX_VALUE))
         );
 
         pack();
@@ -429,16 +407,25 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private void label1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label1MouseClicked
         // TODO add your handling code here:
         this.miseDuJoueur = Integer.parseInt(label1.getText());
+        mise.setVisible(false);
+        question.setVisible(true);
+        question.setSize(900,900);
     }//GEN-LAST:event_label1MouseClicked
 
     private void label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label2MouseClicked
         // TODO add your handling code here:
         this.miseDuJoueur = Integer.parseInt(label2.getText());
+        mise.setVisible(false);
+        question.setVisible(true);
+        question.setSize(900,900);
     }//GEN-LAST:event_label2MouseClicked
 
     private void label3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label3MouseClicked
         // TODO add your handling code here:
         this.miseDuJoueur = Integer.parseInt(label3.getText());
+        mise.setVisible(false);
+        question.setVisible(true);
+        question.setSize(900,900);
     }//GEN-LAST:event_label3MouseClicked
 
     private void rep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep1ActionPerformed
@@ -459,6 +446,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         rep2.setEnabled(false);
         rep3.setEnabled(false);
         quit.setEnabled(true);
+
     }//GEN-LAST:event_rep1MouseClicked
 
     private void rep2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rep2MouseClicked
@@ -499,14 +487,36 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
 
     private void quitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitMouseClicked
         // TODO add your handling code here:
-        mise.setEnabled(false);
-        question.setEnabled(false);
+        int nbPtGagneOuPerdu;
+        if (resultat) {
+            nbPtGagneOuPerdu = miseDuJoueur;
+        } else {
+            nbPtGagneOuPerdu = -miseDuJoueur;
+        }
+        if (jeu1.j1.isaUnBonus() && nbPtGagneOuPerdu > 0) {
+            System.out.println("Grace à votre précédente action vous remportez un point de plus à la question ");
+            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + nbPtGagneOuPerdu + 1);
+            jeu1.j1.setaUnBonus(false);
+        } else {
+            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + nbPtGagneOuPerdu);// nombre positif ou négatif 
+        }
+        if (jeu1.j1.getNbPt() > 20) {
+            jeu1.j1.setNbPt(20);
+            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+        }
+        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+        question.setVisible(false);
+        this.setVisible(true);
+        deFrame.setEnabled(true);
+
     }//GEN-LAST:event_quitMouseClicked
 
     private void newGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newGameMouseClicked
-        // TODO add your handling code here:
-      jeu1=new Jeu(); 
-      this.jeuFrame();
+        // TODO add your handling code here:  
+        new FrameJeuOieIdmc().setVisible(true);
+        deFrame.setEnabled(true);
+        infos.setText("Veuillez lancer le dé ");
+       
     }//GEN-LAST:event_newGameMouseClicked
 
     private void recommencerouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommencerouiActionPerformed
@@ -515,14 +525,79 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
 
     private void recommencerouiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recommencerouiMouseClicked
         // TODO add your handling code here:
-        reponseRecommencer=true;
+        reponseRecommencer = true;
     }//GEN-LAST:event_recommencerouiMouseClicked
 
     private void recommencernonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_recommencernonMouseClicked
         // TODO add your handling code here:
-        reponseRecommencer=false;
+        reponseRecommencer = false;
     }//GEN-LAST:event_recommencernonMouseClicked
 
+    private void deFrameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deFrameMouseClicked
+        // TODO add your handling code here:
+        deFrame.setEnabled(false);
+        plateauFrame.get(jeu1.j1.getPosition()).setIcon(null);
+        Random ra = new Random();
+        jeu1.de = ra.nextInt(5) + 1;
+        infos.setText("Vous avancez de " + jeu1.de);
+        jeu1.j1.setPosition(jeu1.j1.getPosition() + jeu1.de);
+        plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
+        if(jeu1.j1.getPosition()<jeu1.plateau1.getPlateau().size()){
+        if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Malus) {//si l'event est un malus
+
+            Malus malus = (Malus) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setText(malus.nom);
+            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (malus.points));
+            if (jeu1.j1.getNbPt() < 0) {
+                jeu1.j1.setNbPt(0);
+                nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+            }
+            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+
+            deFrame.setEnabled(true);
+        } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Bonus) {// si l'event est un bonus 
+
+            Bonus bonus = (Bonus) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setText(bonus.nom);
+            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));
+            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));// on ajoute au joueur son nb de points
+            if (jeu1.j1.getNbPt() > 20) {
+                jeu1.j1.setNbPt(20);
+                nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+            }
+            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+            deFrame.setEnabled(true);
+        } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Question) {// si l'event est une question
+            Question question1 = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
+           
+            this.setVisible(false);
+            mise.setVisible(true);
+            mise.setSize(900, 900);
+
+        } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
+
+            Plus plus = (Plus) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setText(plus.nom);
+            jeu1.j1.setaUnBonus(true);//change le booleen de joueur en true 
+            deFrame.setEnabled(true);
+        }else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Neutre){
+            Neutre neutre = (Neutre) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setText(neutre.nom);
+            deFrame.setEnabled(true);
+        }
+        }
+        else{
+            if(jeu1.j1.getNbPt()>=10){
+                evenementFrame.setText("Vous avez eu votre année!");
+                System.exit(0);
+            }
+            else{
+                evenementFrame.setText("Vous redoublez...Peut être l'année prochaine! ");
+                System.exit(0);
+            }
+        }
+        
+    }//GEN-LAST:event_deFrameMouseClicked
 
     public void PoserQuestionFrame() {
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
@@ -533,98 +608,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         quit.setEnabled(false);
     }
 
-    public void jeuFrame() {
-        boolean recommencer = true;
-        while (recommencer) {
-            infos.setText("----début de la partie----");
-            jeu1.j1 = new Joueur();
-            jeu1.j1.setNbPt(0);
-            jeu1.j1.setPosition(0);
-            plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
-
-            int i = 0;
-            while (i < jeu1.plateau1.plateau.size()) {
-                deFrame.setEnabled(true);
-                if (!deFrame.isEnabled()) {
-                    plateauFrame.get(jeu1.j1.getPosition()).setIcon(null);
-
-                    jeu1.j1.avancer(jeu1.de);//permet d'avancer le joueur du nombre de cases de ton dé
-                    plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
-                    i += jeu1.de;
-                    if (i >= jeu1.plateau1.plateau.size()) {
-                        break;
-                    }
-                    if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Malus) {//si l'event est un malus
-
-                        Malus malus = (Malus) jeu1.plateau1.get(jeu1.j1.getPosition());
-                        System.out.println(malus);
-                        jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (malus.points));
-                        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
-                    } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Bonus) {// si l'event est un bonus 
-
-                        Bonus bonus = (Bonus) jeu1.plateau1.get(jeu1.j1.getPosition());
-                        System.out.println(bonus);
-                        jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));// on ajoute au joueur son nb de points 
-                        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
-                    } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Question) {// si l'event est une question
-                        Question question1 = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
-                        int nbPtGagneOuPerdu;
-                        mise.setVisible(true);
-                        question.setVisible(true);
-                        if (resultat) {
-                            nbPtGagneOuPerdu = miseDuJoueur;
-                        } else {
-                            nbPtGagneOuPerdu = -miseDuJoueur;
-                        }
-                        if (jeu1.j1.isaUnBonus() && nbPtGagneOuPerdu > 0) {
-                            System.out.println("Grace à votre précédente action vous remportez un point de plus à la question ");
-                            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + nbPtGagneOuPerdu + 1);
-                            jeu1.j1.setaUnBonus(false);
-                        } else {
-                            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + nbPtGagneOuPerdu);// nombre positif ou négatif 
-                        }
-                        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
-
-                    } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
-
-                        Plus plus = (Plus) jeu1.plateau1.get(jeu1.j1.getPosition());
-                        System.out.println(plus);
-                        jeu1.j1.setaUnBonus(true);//change le booleen de joueur en true 
-
-                    }
-                    if (jeu1.j1.getNbPt() < 0) {
-                        jeu1.j1.setNbPt(0);
-                        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
-                    }
-                    if (jeu1.j1.getNbPt() > 20) {
-                        jeu1.j1.setNbPt(20);
-                        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
-                    }
-                }
-                infos.setText("Vous avez " + jeu1.j1.getNbPt() + " points");
-                if (jeu1.j1.getNbPt() >= 10) {
-                    infos.setText("Bravo " + jeu1.j1.getNom() + " ! Vous avez remporté la partie! Le précieux diplôme est entre vos main!");
-                } else {
-                    infos.setText("Vous n'avez pas 10 de moyenne, vous redoublez ");
-                }
-                try {
-
-                    labelRecommencerPartie.setText("Voulez vous redoubler ou changer d'établissement ? ");//recommencer la partie 
-                    if (reponseRecommencer) {
-                        recommencer = true;
-                        jeu1 = new Jeu();
-                    } else {
-                        panel1.setVisible(false);
-                        System.exit(0);
-                    }
-
-                } catch (Exception e) {
-                    System.out.println("L'administration et Mme Besse ne comprend pas votre requête, veuillez recommencer");
-                }
-            }
-        }
-    }
-
+   
     /**
      * @param args the command line arguments
      */
@@ -651,24 +635,25 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrameJeuOieIdmc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrameJeuOieIdmc().setVisible(true);
+
             }
         });
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deFrame;
+    private javax.swing.JLabel evenementFrame;
     private javax.swing.JLabel infos;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton label1;
     private javax.swing.JButton label2;
     private javax.swing.JButton label3;
-    private javax.swing.JLabel labelRecommencerPartie;
     private javax.swing.JFrame mise;
     private javax.swing.JLabel miseLabel;
     private javax.swing.JLabel nbPoint;
@@ -677,9 +662,6 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private javax.swing.JFrame question;
     private javax.swing.JLabel questionAPoser;
     private javax.swing.JButton quit;
-    private javax.swing.JFrame recommencer;
-    private javax.swing.JButton recommencernon;
-    private javax.swing.JButton recommenceroui;
     private javax.swing.JButton rep1;
     private javax.swing.JButton rep2;
     private javax.swing.JButton rep3;

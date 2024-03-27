@@ -15,9 +15,7 @@ public class Joueur {
         this.nbpoints = 0;
         this.position = 0;
         this.aUnBonus = false;
-        System.out.println("Entrez votre nom");
-        Scanner lectureClavier = new Scanner(System.in);
-        nom=lectureClavier.next();
+        nom="Joueur";
     }
     
     public void avancer(int dé){ //méthode pour faire avancer le joueur (modifier sa position)
