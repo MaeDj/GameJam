@@ -1,7 +1,6 @@
 package gamejamjeuoie;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Question extends Evenement {
@@ -98,4 +97,19 @@ public class Question extends Evenement {
         return (points);
     }
 
+    public ArrayList<String[]> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(ArrayList<String[]> questions) {
+        this.questions = questions;
+    }
+
+    public String[] getReponse() {
+        return reponse;
+    }
+
+    public void setReponse(String[] reponse) {
+        this.reponse = reponse;
+    }
 }

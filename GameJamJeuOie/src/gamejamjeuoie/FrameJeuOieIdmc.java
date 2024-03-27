@@ -337,6 +337,13 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rep1ActionPerformed
 
+    public void PoserQuestionFrame(){
+        Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
+        questionAPoser.setText(event.getReponse()[0]);
+        rep1.setText(event.getReponse()[1]);
+        rep2.setText(event.getReponse()[2]);
+        rep3.setText(event.getReponse()[3]);
+    }
     /**
      * @param args the command line arguments
      */
