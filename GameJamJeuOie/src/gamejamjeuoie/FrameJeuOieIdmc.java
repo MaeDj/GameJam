@@ -128,7 +128,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         jeu1.j1.setPosition(0);
         plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
         deFrame.setEnabled(false);
-
+        evenementFrame.setText("");
     }
 
     /**
@@ -154,6 +154,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         label3 = new javax.swing.JButton();
         findepartie = new javax.swing.JFrame();
         labelfindepartie = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         panel1 = new java.awt.Panel();
         deFrame = new javax.swing.JButton();
         infos = new javax.swing.JLabel();
@@ -314,6 +315,13 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 .addContainerGap(483, Short.MAX_VALUE))
         );
 
+        jButton1.setText("Quitter");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout findepartieLayout = new javax.swing.GroupLayout(findepartie.getContentPane());
         findepartie.getContentPane().setLayout(findepartieLayout);
         findepartieLayout.setHorizontalGroup(
@@ -322,13 +330,19 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 .addGap(176, 176, 176)
                 .addComponent(labelfindepartie, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(182, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, findepartieLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94))
         );
         findepartieLayout.setVerticalGroup(
             findepartieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, findepartieLayout.createSequentialGroup()
                 .addContainerGap(344, Short.MAX_VALUE)
                 .addComponent(labelfindepartie, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(302, 302, 302))
+                .addGap(61, 61, 61)
+                .addComponent(jButton1)
+                .addGap(218, 218, 218))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -529,12 +543,14 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         }
         if (jeu1.j1.getNbPt() > 20) {
             jeu1.j1.setNbPt(20);
-            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()) + "/20");
+        }
+        if (jeu1.j1.getNbPt() < 0) {
+            jeu1.j1.setNbPt(0);
         }
         nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()) + "/20");
         question.setVisible(false);
         this.setVisible(true);
-        deFrame.setVisible(true);
+        deFrame.setEnabled(true);
 
     }//GEN-LAST:event_quitMouseClicked
 
@@ -570,22 +586,33 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         Random ra = new Random();
         jeu1.de = ra.nextInt(5) + 1;
         infos.setText("Vous avancez de " + jeu1.de);
+
         jeu1.j1.setPosition(jeu1.j1.getPosition() + jeu1.de);
-        if (jeu1.j1.getPosition() < jeu1.plateau1.getPlateau().size()) {
-            plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
+        if (jeu1.j1.getPosition() >= 31) {
+             if (jeu1.j1.getNbPt() >= 10) {
+                labelfindepartie.setText("Vous avez eu votre année!");
 
-            if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Malus) {//si l'event est un malus
-
-                Malus malus = (Malus) jeu1.plateau1.get(jeu1.j1.getPosition());
-                evenementFrame.setText(malus.toString());
-                jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (malus.points));
-                if (jeu1.j1.getNbPt() < 0) {
-                    jeu1.j1.setNbPt(0);
-                    nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
-                }
-                nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+            } else {
+                labelfindepartie.setText("Vous redoublez...Peut être l'année prochaine! ");
 
             }
+            findepartie.setVisible(true);
+            findepartie.setSize(900, 900);
+           
+        }
+        plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
+
+        if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Malus) {//si l'event est un malus
+
+            Malus malus = (Malus) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setText(malus.nom);
+            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (malus.points));
+            if (jeu1.j1.getNbPt() < 0) {
+                jeu1.j1.setNbPt(0);
+                nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+            }
+            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+
             nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()) + "/20");
 
             deFrame.setEnabled(true);
@@ -593,44 +620,43 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
 
             Bonus bonus = (Bonus) jeu1.plateau1.get(jeu1.j1.getPosition());
             evenementFrame.setText(bonus.nom);
-            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));
+
             jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));// on ajoute au joueur son nb de points
+            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()) + "/20");
             if (jeu1.j1.getNbPt() > 20) {
                 jeu1.j1.setNbPt(20);
                 nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()) + "/20");
-                deFrame.setEnabled(true);
-            } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Question) {// si l'event est une question
-                Question question1 = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
-
-                this.setVisible(false);
-                mise.setVisible(true);
-                mise.setSize(900, 900);
-
-            } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
-
-                Plus plus = (Plus) jeu1.plateau1.get(jeu1.j1.getPosition());
-                evenementFrame.setText(plus.nom);
-                jeu1.j1.setaUnBonus(true);//change le booleen de joueur en true 
-                deFrame.setEnabled(true);
-            } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Neutre) {
-                Neutre neutre = (Neutre) jeu1.plateau1.get(jeu1.j1.getPosition());
-                evenementFrame.setText(neutre.nom);
-                deFrame.setEnabled(true);
 
             }
-        } else {
-            findepartie.setVisible(true);
-            findepartie.setSize(900, 900);
-            if (jeu1.j1.getNbPt() >= 10) {
-                labelfindepartie.setText("Vous avez eu votre année!");
-                System.exit(0);
-            } else {
-                labelfindepartie.setText("Vous redoublez...Peut être l'année prochaine! ");
-                System.exit(0);
-            }
+            deFrame.setEnabled(true);
+
+        } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Question) {// si l'event est une question
+            Question question1 = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
+
+            this.setVisible(false);
+            mise.setVisible(true);
+            mise.setSize(900, 900);
+
+        } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
+
+            Plus plus = (Plus) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setText(plus.nom);
+            jeu1.j1.setaUnBonus(true);//change le booleen de joueur en true 
+            deFrame.setEnabled(true);
+        } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Neutre) {
+            Neutre neutre = (Neutre) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setText(neutre.nom);
+            deFrame.setEnabled(true);
+
         }
 
+
     }//GEN-LAST:event_deFrameMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     public void PoserQuestionFrame() {
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
@@ -659,16 +685,24 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameJeuOieIdmc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameJeuOieIdmc.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameJeuOieIdmc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameJeuOieIdmc.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameJeuOieIdmc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameJeuOieIdmc.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameJeuOieIdmc.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrameJeuOieIdmc.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -687,6 +721,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private javax.swing.JLabel evenementFrame;
     private javax.swing.JFrame findepartie;
     private javax.swing.JLabel infos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton label1;
     private javax.swing.JButton label2;
