@@ -26,6 +26,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     Image imageResizeLivre;
     Jeu jeu1 = new Jeu();
     int miseDuJoueur;
+    boolean resultat;
 
     /**
      * Creates new form FrameJeuOieIdmc
@@ -137,6 +138,8 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         rep1 = new javax.swing.JButton();
         rep2 = new javax.swing.JButton();
         rep3 = new javax.swing.JButton();
+        resultatQuestion = new javax.swing.JLabel();
+        quit = new javax.swing.JButton();
         mise = new javax.swing.JFrame();
         miseLabel = new javax.swing.JLabel();
         label1 = new javax.swing.JButton();
@@ -150,6 +153,11 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         questionAPoser.setText("Question à poser");
 
         rep1.setText("rep1");
+        rep1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rep1MouseClicked(evt);
+            }
+        });
         rep1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rep1ActionPerformed(evt);
@@ -157,6 +165,11 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         });
 
         rep2.setText("rep2");
+        rep2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rep2MouseClicked(evt);
+            }
+        });
         rep2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rep2ActionPerformed(evt);
@@ -164,6 +177,25 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         });
 
         rep3.setText("rep3");
+        rep3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rep3MouseClicked(evt);
+            }
+        });
+        rep3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rep3ActionPerformed(evt);
+            }
+        });
+
+        resultatQuestion.setText("Bravo/Raté");
+
+        quit.setText("Quitter");
+        quit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quitMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout questionLayout = new javax.swing.GroupLayout(question.getContentPane());
         question.getContentPane().setLayout(questionLayout);
@@ -171,13 +203,18 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
             questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(questionLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(questionAPoser, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(rep1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rep2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(rep3, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)))
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(quit)
+                    .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(questionAPoser, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(questionLayout.createSequentialGroup()
+                            .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(rep1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rep2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(rep3, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addComponent(resultatQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         questionLayout.setVerticalGroup(
             questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,11 +223,18 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 .addComponent(questionAPoser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(rep1)
-                .addGap(39, 39, 39)
-                .addComponent(rep2)
-                .addGap(46, 46, 46)
+                .addGroup(questionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(questionLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(rep2))
+                    .addGroup(questionLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(resultatQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
                 .addComponent(rep3)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(quit)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         miseLabel.setText("Quelle mise souhaitez vous tenter?");
@@ -337,12 +381,74 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rep1ActionPerformed
 
+    private void rep1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rep1MouseClicked
+        // TODO add your handling code here:
+        Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
+        if(event.getReponse()[4]=="1"){
+            resultatQuestion.setText("Bravo !");
+            resultat=true;
+        }
+        else{
+            resultatQuestion.setText("Raté !");
+            resultat=false;
+        }
+        rep1.setEnabled(false);
+        rep2.setEnabled(false);
+        rep3.setEnabled(false);
+        quit.setEnabled(true);
+    }//GEN-LAST:event_rep1MouseClicked
+
+    private void rep2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rep2MouseClicked
+        // TODO add your handling code here:
+        Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
+        if(event.getReponse()[4]=="2"){
+            resultatQuestion.setText("Bravo !");
+            resultat=true;
+        }
+        else{
+            resultatQuestion.setText("Raté !");
+            resultat=false;
+        }
+        rep1.setEnabled(false);
+        rep2.setEnabled(false);
+        rep3.setEnabled(false);
+        quit.setEnabled(true);
+    }//GEN-LAST:event_rep2MouseClicked
+
+    private void rep3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rep3MouseClicked
+        // TODO add your handling code here:
+        Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
+        if(event.getReponse()[4]=="3"){
+            resultatQuestion.setText("Bravo !");
+            resultat=true;
+        }
+        else{
+            resultatQuestion.setText("Raté !");
+            resultat=false;
+        }
+        rep1.setEnabled(false);
+        rep2.setEnabled(false);
+        rep3.setEnabled(false);
+        quit.setEnabled(true);
+    }//GEN-LAST:event_rep3MouseClicked
+
+    private void rep3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rep3ActionPerformed
+
+    private void quitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quitMouseClicked
+        // TODO add your handling code here:
+        mise.setEnabled(false);
+        question.setEnabled(false);
+    }//GEN-LAST:event_quitMouseClicked
+
     public void PoserQuestionFrame(){
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
         questionAPoser.setText(event.getReponse()[0]);
         rep1.setText(event.getReponse()[1]);
         rep2.setText(event.getReponse()[2]);
         rep3.setText(event.getReponse()[3]);
+        quit.setEnabled(false);
     }
     /**
      * @param args the command line arguments
@@ -391,8 +497,10 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private java.awt.Panel panel1;
     private javax.swing.JFrame question;
     private javax.swing.JLabel questionAPoser;
+    private javax.swing.JButton quit;
     private javax.swing.JButton rep1;
     private javax.swing.JButton rep2;
     private javax.swing.JButton rep3;
+    private javax.swing.JLabel resultatQuestion;
     // End of variables declaration//GEN-END:variables
 }
