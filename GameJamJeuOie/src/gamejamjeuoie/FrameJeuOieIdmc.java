@@ -23,7 +23,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
 
     ArrayList<JLabel> plateauFrame = new ArrayList<>();
     Image imageResize;
-    
+    Jeu jeu1 = new Jeu();
 
     /**
      * Creates new form FrameJeuOieIdmc
@@ -33,19 +33,22 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         int Horiz, Vert;
         Horiz = 170;
         Vert = 150;
-       
+
         for (int i = 0; i < 33; i++) { // on créé notre plateau
 
             plateauFrame.add(i, new JLabel());
             if (i == 32) {
                 plateauFrame.get(i).setText("Diplôme!!!");
             } else {
-               /* if (jeu1.plateau1.plateau.get(i) instanceof Bonus) {
+                if (jeu1.plateau1.plateau.get(i) instanceof Bonus) {
+                    plateauFrame.get(i).setOpaque(rootPaneCheckingEnabled);
                     plateauFrame.get(i).setBackground(Color.BLUE);
                 } else if (jeu1.plateau1.plateau.get(i) instanceof Malus) {
-                    PlateauFrame.get(i).setBackground(Color.RED);
-                }*/
+                    plateauFrame.get(i).setOpaque(rootPaneCheckingEnabled);
+                    plateauFrame.get(i).setBackground(Color.red);
+                }
                 plateauFrame.get(i).setText(String.valueOf(i + 1));
+
             }
 
             plateauFrame.get(i).setLocation(Horiz, Vert);// on pose le Jlabel à 300px à l'horizontal et à 300 px à la verticale et on avance de 70 px à chaque label vers la droite 
@@ -64,6 +67,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
             // code inspiré de https://stackoverflow.com/questions/39798401/how-to-make-a-border-fit-around-a-jlabel
             plateauFrame.get(i).setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.BLACK));
             // on change la bordure en noir avec la méthode setBorder de la classe JComponent qui est extends par la classe JLabel 
+
         }
 
         Horiz = 100;

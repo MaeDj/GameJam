@@ -14,13 +14,14 @@ import java.util.Scanner;
 public class Jeu implements Listevent {
 
     Plateau plateau1=new Plateau(); // le plateau sur lequel on joue 
-    Joueur j1 = new Joueur();// le joueur qui joue 
+    Joueur j1;// le joueur qui joue 
     int de, i; // décide au hasard de combiens de cases va être avancé le Joueur 
 
     public void jeu() {
         boolean recommencer = true;
         while (recommencer) {
             System.out.println("----début de la partie----");
+            j1=new Joueur();
             j1.setNbPt(0);
             j1.setPosition(0);
             plateau1 = new Plateau();
