@@ -17,16 +17,16 @@ public class Malus extends Evenement {
         Random rand = new Random();
         int choix = rand.nextInt(4);
         if (choix == 0) {
-           super.nom= " Ah Zut!, Vous êtes arrivé en retard au cours ! ";
+           super.nom= " Ah Zut!, Vous êtes arrivé en retard au cours ! -1 ";
             points = -1;
         } else if (choix == 1) {
-           super.nom = " Vous n'avez pas  fait vos exercices ! Alors vous allez prendre vos affaires et rentrez chez vous ! ";
+           super.nom = " Vous n'avez pas  fait vos exercices ! Alors vous allez prendre vos affaires et rentrez chez vous ! -2 ";
             points = -2;
         } else if(choix==2){
-            super.nom = " Ohlala! C'est inadmissible vous êtiez absent au cours ! ";
+            super.nom = " Ohlala! C'est inadmissible vous êtiez absent au cours ! -4 ";
             points = -4;
         }else{
-            super.nom= "Vous avez raté votre semestre ! Ça va mal finir pour vous !  ";
+            super.nom= "Vous avez raté votre semestre ! Ça va mal finir pour vous ! -100  ";
             points = -100;
         }
     }
