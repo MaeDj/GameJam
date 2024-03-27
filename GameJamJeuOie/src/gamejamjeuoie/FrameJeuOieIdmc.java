@@ -410,6 +410,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         mise.setVisible(false);
         question.setVisible(true);
         question.setSize(900,900);
+        this.PoserQuestionFrame();
     }//GEN-LAST:event_label1MouseClicked
 
     private void label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label2MouseClicked
@@ -418,6 +419,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         mise.setVisible(false);
         question.setVisible(true);
         question.setSize(900,900);
+        this.PoserQuestionFrame();
     }//GEN-LAST:event_label2MouseClicked
 
     private void label3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label3MouseClicked
@@ -426,6 +428,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         mise.setVisible(false);
         question.setVisible(true);
         question.setSize(900,900);
+        this.PoserQuestionFrame();
     }//GEN-LAST:event_label3MouseClicked
 
     private void rep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep1ActionPerformed
@@ -436,27 +439,26 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         // TODO add your handling code here:
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
         if (event.getReponse()[4] == "1") {
-            resultatQuestion.setText("Bravo !");
+            resultatQuestion.setText("Bravo ! +"+miseDuJoueur);
             resultat = true;
         } else {
-            resultatQuestion.setText("Raté !");
+            resultatQuestion.setText("Raté ! -"+miseDuJoueur);
             resultat = false;
         }
         rep1.setEnabled(false);
         rep2.setEnabled(false);
         rep3.setEnabled(false);
         quit.setEnabled(true);
-
     }//GEN-LAST:event_rep1MouseClicked
 
     private void rep2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rep2MouseClicked
         // TODO add your handling code here:
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
         if (event.getReponse()[4] == "2") {
-            resultatQuestion.setText("Bravo !");
+            resultatQuestion.setText("Bravo ! +"+miseDuJoueur);
             resultat = true;
         } else {
-            resultatQuestion.setText("Raté !");
+            resultatQuestion.setText("Raté ! -"+miseDuJoueur);
             resultat = false;
         }
         rep1.setEnabled(false);
@@ -469,10 +471,10 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         // TODO add your handling code here:
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
         if (event.getReponse()[4] == "3") {
-            resultatQuestion.setText("Bravo !");
+            resultatQuestion.setText("Bravo ! +"+miseDuJoueur);
             resultat = true;
         } else {
-            resultatQuestion.setText("Raté !");
+            resultatQuestion.setText("Raté ! -"+miseDuJoueur);
             resultat = false;
         }
         rep1.setEnabled(false);
@@ -502,9 +504,9 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         }
         if (jeu1.j1.getNbPt() > 20) {
             jeu1.j1.setNbPt(20);
-            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt())+"/20");
         }
-        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+        nbPoint.setText(String.valueOf(jeu1.j1.getNbPt())+"/20");
         question.setVisible(false);
         this.setVisible(true);
         deFrame.setVisible(true);
@@ -515,6 +517,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         // TODO add your handling code here:  
         new FrameJeuOieIdmc().setVisible(true);
         this.deFrame.setVisible(true);
+        deFrame.setEnabled(true);
         infos.setText("Veuillez lancer le dé ");
        
     }//GEN-LAST:event_newGameMouseClicked
@@ -552,7 +555,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 jeu1.j1.setNbPt(0);
                 nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
             }
-            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt())+"/20");
 
             deFrame.setEnabled(true);
         } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Bonus) {// si l'event est un bonus 
@@ -563,7 +566,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
             jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));// on ajoute au joueur son nb de points
             if (jeu1.j1.getNbPt() > 20) {
                 jeu1.j1.setNbPt(20);
-                nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+                nbPoint.setText(String.valueOf(jeu1.j1.getNbPt())+"/20");
             }
             nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
             deFrame.setEnabled(true);
@@ -602,6 +605,10 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     public void PoserQuestionFrame() {
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
         questionAPoser.setText(event.getReponse()[0]);
+        rep1.setEnabled(true);
+        rep2.setEnabled(true);
+        rep3.setEnabled(true);
+        resultatQuestion.setText("");
         rep1.setText(event.getReponse()[1]);
         rep2.setText(event.getReponse()[2]);
         rep3.setText(event.getReponse()[3]);
