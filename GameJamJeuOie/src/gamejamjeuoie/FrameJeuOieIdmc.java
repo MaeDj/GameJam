@@ -152,6 +152,8 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         label1 = new javax.swing.JButton();
         label2 = new javax.swing.JButton();
         label3 = new javax.swing.JButton();
+        findepartie = new javax.swing.JFrame();
+        labelfindepartie = new javax.swing.JLabel();
         panel1 = new java.awt.Panel();
         deFrame = new javax.swing.JButton();
         infos = new javax.swing.JLabel();
@@ -312,6 +314,23 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 .addContainerGap(483, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout findepartieLayout = new javax.swing.GroupLayout(findepartie.getContentPane());
+        findepartie.getContentPane().setLayout(findepartieLayout);
+        findepartieLayout.setHorizontalGroup(
+            findepartieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(findepartieLayout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(labelfindepartie, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(182, Short.MAX_VALUE))
+        );
+        findepartieLayout.setVerticalGroup(
+            findepartieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, findepartieLayout.createSequentialGroup()
+                .addContainerGap(344, Short.MAX_VALUE)
+                .addComponent(labelfindepartie, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(302, 302, 302))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         deFrame.setText("lancer le dé");
@@ -409,7 +428,6 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         this.miseDuJoueur = Integer.parseInt(label1.getText());
         mise.setVisible(false);
         question.setVisible(true);
-        question.setSize(900,900);
     }//GEN-LAST:event_label1MouseClicked
 
     private void label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label2MouseClicked
@@ -418,6 +436,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         mise.setVisible(false);
         question.setVisible(true);
         question.setSize(900,900);
+        question.setSize(900, 900);
     }//GEN-LAST:event_label2MouseClicked
 
     private void label3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label3MouseClicked
@@ -426,6 +445,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         mise.setVisible(false);
         question.setVisible(true);
         question.setSize(900,900);
+        question.setSize(900, 900);
     }//GEN-LAST:event_label3MouseClicked
 
     private void rep1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rep1ActionPerformed
@@ -513,10 +533,6 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
 
     private void newGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newGameMouseClicked
         // TODO add your handling code here:  
-        new FrameJeuOieIdmc().setVisible(true);
-        this.deFrame.setVisible(true);
-        infos.setText("Veuillez lancer le dé ");
-       
     }//GEN-LAST:event_newGameMouseClicked
 
     private void recommencerouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommencerouiActionPerformed
@@ -541,62 +557,17 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         jeu1.de = ra.nextInt(5) + 1;
         infos.setText("Vous avancez de " + jeu1.de);
         jeu1.j1.setPosition(jeu1.j1.getPosition() + jeu1.de);
-        plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
-        if(jeu1.j1.getPosition()<jeu1.plateau1.getPlateau().size()){
-        if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Malus) {//si l'event est un malus
+                nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
 
-            Malus malus = (Malus) jeu1.plateau1.get(jeu1.j1.getPosition());
-            evenementFrame.setText(malus.nom);
-            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (malus.points));
-            if (jeu1.j1.getNbPt() < 0) {
-                jeu1.j1.setNbPt(0);
+                deFrame.setEnabled(true);
+            } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Bonus) {// si l'event est un bonus 
+
                 nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
             }
-            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
-
-            deFrame.setEnabled(true);
-        } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Bonus) {// si l'event est un bonus 
-
-            Bonus bonus = (Bonus) jeu1.plateau1.get(jeu1.j1.getPosition());
-            evenementFrame.setText(bonus.nom);
-            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));
-            jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));// on ajoute au joueur son nb de points
-            if (jeu1.j1.getNbPt() > 20) {
-                jeu1.j1.setNbPt(20);
-                nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
-            }
-            nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
-            deFrame.setEnabled(true);
-        } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Question) {// si l'event est une question
-            Question question1 = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
-           
-            this.setVisible(false);
-            mise.setVisible(true);
-            mise.setSize(900, 900);
-
-        } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
-
-            Plus plus = (Plus) jeu1.plateau1.get(jeu1.j1.getPosition());
-            evenementFrame.setText(plus.nom);
-            jeu1.j1.setaUnBonus(true);//change le booleen de joueur en true 
-            deFrame.setEnabled(true);
-        }else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Neutre){
-            Neutre neutre = (Neutre) jeu1.plateau1.get(jeu1.j1.getPosition());
-            evenementFrame.setText(neutre.nom);
-            deFrame.setEnabled(true);
-        }
-        }
-        else{
-            if(jeu1.j1.getNbPt()>=10){
-                evenementFrame.setText("Vous avez eu votre année!");
                 System.exit(0);
-            }
-            else{
-                evenementFrame.setText("Vous redoublez...Peut être l'année prochaine! ");
                 System.exit(0);
             }
         }
-        
     }//GEN-LAST:event_deFrameMouseClicked
 
     public void PoserQuestionFrame() {
@@ -649,11 +620,13 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deFrame;
     private javax.swing.JLabel evenementFrame;
+    private javax.swing.JFrame findepartie;
     private javax.swing.JLabel infos;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton label1;
     private javax.swing.JButton label2;
     private javax.swing.JButton label3;
+    private javax.swing.JLabel labelfindepartie;
     private javax.swing.JFrame mise;
     private javax.swing.JLabel miseLabel;
     private javax.swing.JLabel nbPoint;
