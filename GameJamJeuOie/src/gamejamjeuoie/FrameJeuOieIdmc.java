@@ -428,6 +428,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         this.miseDuJoueur = Integer.parseInt(label1.getText());
         mise.setVisible(false);
         question.setVisible(true);
+        question.setSize(900, 900);
     }//GEN-LAST:event_label1MouseClicked
 
     private void label2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label2MouseClicked
@@ -435,7 +436,6 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         this.miseDuJoueur = Integer.parseInt(label2.getText());
         mise.setVisible(false);
         question.setVisible(true);
-        question.setSize(900,900);
         question.setSize(900, 900);
     }//GEN-LAST:event_label2MouseClicked
 
@@ -444,7 +444,6 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         this.miseDuJoueur = Integer.parseInt(label3.getText());
         mise.setVisible(false);
         question.setVisible(true);
-        question.setSize(900,900);
         question.setSize(900, 900);
     }//GEN-LAST:event_label3MouseClicked
 
@@ -533,6 +532,12 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
 
     private void newGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newGameMouseClicked
         // TODO add your handling code here:  
+        FrameJeuOieIdmc newFrame = new FrameJeuOieIdmc();
+        newFrame.setVisible(true);
+        newFrame.deFrame.setEnabled(true);
+        newFrame.infos.setText("Veuillez lancer le dé ");
+
+
     }//GEN-LAST:event_newGameMouseClicked
 
     private void recommencerouiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recommencerouiActionPerformed
@@ -557,17 +562,63 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         jeu1.de = ra.nextInt(5) + 1;
         infos.setText("Vous avancez de " + jeu1.de);
         jeu1.j1.setPosition(jeu1.j1.getPosition() + jeu1.de);
+        if (jeu1.j1.getPosition() < jeu1.plateau1.getPlateau().size()) {
+            plateauFrame.get(jeu1.j1.getPosition()).setIcon(new ImageIcon(imageResize));
+
+            if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Malus) {//si l'event est un malus
+
+                Malus malus = (Malus) jeu1.plateau1.get(jeu1.j1.getPosition());
+                evenementFrame.setText(malus.toString());
+                jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (malus.points));
+                if (jeu1.j1.getNbPt() < 0) {
+                    jeu1.j1.setNbPt(0);
+                    nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+                }
                 nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
 
                 deFrame.setEnabled(true);
             } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Bonus) {// si l'event est un bonus 
 
+                Bonus bonus = (Bonus) jeu1.plateau1.get(jeu1.j1.getPosition());
+                evenementFrame.setText(bonus.toString());
+                jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));
+                jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));// on ajoute au joueur son nb de points
+                if (jeu1.j1.getNbPt() > 20) {
+                    jeu1.j1.setNbPt(20);
+                    nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+                }
                 nbPoint.setText(String.valueOf(jeu1.j1.getNbPt()));
+                deFrame.setEnabled(true);
+            } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Question) {// si l'event est une question
+                Question question1 = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
+
+                this.setVisible(false);
+                mise.setVisible(true);
+                mise.setSize(900, 900);
+
+            } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
+
+                Plus plus = (Plus) jeu1.plateau1.get(jeu1.j1.getPosition());
+                evenementFrame.setText(plus.nom);
+                jeu1.j1.setaUnBonus(true);//change le booleen de joueur en true 
+                deFrame.setEnabled(true);
+            } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Neutre) {
+                Neutre neutre = (Neutre) jeu1.plateau1.get(jeu1.j1.getPosition());
+                evenementFrame.setText(neutre.nom);
+                deFrame.setEnabled(true);
             }
+        } else {
+            findepartie.setVisible(true);
+            findepartie.setSize(900, 900);
+            if (jeu1.j1.getNbPt() >= 10) {
+                labelfindepartie.setText("Vous avez eu votre année!");
                 System.exit(0);
+            } else {
+                labelfindepartie.setText("Vous redoublez...Peut être l'année prochaine! ");
                 System.exit(0);
             }
         }
+
     }//GEN-LAST:event_deFrameMouseClicked
 
     public void PoserQuestionFrame() {
@@ -579,7 +630,6 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         quit.setEnabled(false);
     }
 
-   
     /**
      * @param args the command line arguments
      */
