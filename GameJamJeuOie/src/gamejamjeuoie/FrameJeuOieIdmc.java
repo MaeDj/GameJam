@@ -149,6 +149,8 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         deFrame = new javax.swing.JButton();
         infos = new javax.swing.JLabel();
         nbPoint = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        newGame = new javax.swing.JMenu();
 
         questionAPoser.setText("Question à poser");
 
@@ -334,6 +336,16 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 .addGap(63, 63, 63))
         );
 
+        newGame.setText("New Game");
+        newGame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newGameMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(newGame);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -438,6 +450,12 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         mise.setEnabled(false);
         question.setEnabled(false);
     }//GEN-LAST:event_quitMouseClicked
+
+    private void newGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newGameMouseClicked
+        // TODO add your handling code here:
+      jeu1=new Jeu(); 
+      this.jeuFrame();
+    }//GEN-LAST:event_newGameMouseClicked
 
     public void PoserQuestionFrame() {
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
@@ -579,12 +597,14 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deFrame;
     private javax.swing.JLabel infos;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton label1;
     private javax.swing.JButton label2;
     private javax.swing.JButton label3;
     private javax.swing.JFrame mise;
     private javax.swing.JLabel miseLabel;
     private javax.swing.JLabel nbPoint;
+    private javax.swing.JMenu newGame;
     private java.awt.Panel panel1;
     private javax.swing.JFrame question;
     private javax.swing.JLabel questionAPoser;
