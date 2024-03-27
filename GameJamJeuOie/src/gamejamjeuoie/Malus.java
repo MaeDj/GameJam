@@ -18,15 +18,15 @@ public class Malus extends Evenement {
         int choix = rand.nextInt(4);
         if (choix == 0) {
            super.nom= " Ah Zut!, Vous êtes arrivé en retard au cours ! ";
-            points = -2;
+            points = -1;
         } else if (choix == 1) {
-           super.nom = " Vous n'avez pas  fait vos exercices ! ";
-            points = -3;
+           super.nom = " Vous n'avez pas  fait vos exercices ! Alors vous allez prendre vos affaires et rentrez chez vous ! ";
+            points = -2;
         } else if(choix==2){
-            super.nom = " Vous êtiez absent au cours  ";
-            points = -5;
+            super.nom = " Ohlala! C'est inadmissible vous êtiez absent au cours ! ";
+            points = -4;
         }else{
-            super.nom= "Oups, vous avez redoublé  ! ";
+            super.nom= "Vous avez raté votre semestre ! Ça va mal finir pour vous !  ";
             points = -100;
         }
     }

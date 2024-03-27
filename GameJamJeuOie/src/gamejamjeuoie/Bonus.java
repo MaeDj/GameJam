@@ -13,16 +13,16 @@ public class Bonus extends Evenement {
         Random rand = new Random();
         int choix = rand.nextInt(4);
         if (choix == 0) {
-             super.nom= "Tres bien, vous maitrisez votre cours ! ";
+             super.nom= "Très bien, vous maitrisez votre cours ! ";
             points = 2;
         } else if (choix == 1) {
-            super.nom = "Super, vous etes toujours present en cours ! ";
+            super.nom = "Monsieur Guibon vous remercie pour les litchis ! ";
             points = 1;
         } else if(choix==2){
-            super.nom = "Excellent, vous avez reussi votre semestre ! ";
+            super.nom = "Excellent, vous avez réussi votre semestre ! ";
             points = 5;
         }else{
-            super.nom = "Bravo, vous avez participe à la GameJam ! ";
+            super.nom = "Bravo, vous avez participé à la GameJam ! ";
             points = 3;
         }
     }
