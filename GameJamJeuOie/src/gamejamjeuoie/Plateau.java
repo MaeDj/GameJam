@@ -14,6 +14,7 @@ public class Plateau implements Listevent{
     public Plateau() { //initialisation du plateau
         for(int i=0;i<tabEvent.length;i++){
             temp.add(tabEvent[i]);
+            
         }
         for(int i=0;i<32;i++){
             int alea = (int) (Math.random()*temp.size());

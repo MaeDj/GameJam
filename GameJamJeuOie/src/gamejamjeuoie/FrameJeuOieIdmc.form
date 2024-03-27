@@ -202,8 +202,10 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="75" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                  <Component id="redoubler" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="abandonner" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -213,7 +215,10 @@
                   <EmptySpace pref="344" max="32767" attributes="0"/>
                   <Component id="labelfindepartie" min="-2" pref="253" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="abandonner" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="redoubler" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -222,12 +227,21 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="labelfindepartie">
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="abandonner">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Quitter"/>
+            <Property name="text" type="java.lang.String" value="Abandonner"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="abandonnerMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="redoubler">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Redoubler"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="redoublerMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="redoublerActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

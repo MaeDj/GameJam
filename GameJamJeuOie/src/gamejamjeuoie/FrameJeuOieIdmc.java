@@ -156,7 +156,8 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         label3 = new javax.swing.JButton();
         findepartie = new javax.swing.JFrame();
         labelfindepartie = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        abandonner = new javax.swing.JButton();
+        redoubler = new javax.swing.JButton();
         panel1 = new java.awt.Panel();
         deFrame = new javax.swing.JButton();
         infos = new javax.swing.JLabel();
@@ -317,10 +318,22 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 .addContainerGap(483, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Quitter");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        abandonner.setText("Abandonner");
+        abandonner.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                abandonnerMouseClicked(evt);
+            }
+        });
+
+        redoubler.setText("Redoubler");
+        redoubler.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                redoublerMouseClicked(evt);
+            }
+        });
+        redoubler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                redoublerActionPerformed(evt);
             }
         });
 
@@ -334,8 +347,10 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 .addContainerGap(182, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, findepartieLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94))
+                .addComponent(redoubler)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(abandonner)
+                .addGap(73, 73, 73))
         );
         findepartieLayout.setVerticalGroup(
             findepartieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,7 +358,9 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                 .addContainerGap(344, Short.MAX_VALUE)
                 .addComponent(labelfindepartie, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(61, 61, 61)
-                .addComponent(jButton1)
+                .addGroup(findepartieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(abandonner)
+                    .addComponent(redoubler))
                 .addGap(218, 218, 218))
         );
 
@@ -603,6 +620,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Malus) {//si l'event est un malus
 
             Malus malus = (Malus) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setForeground(Color.red);
             evenementFrame.setText(malus.nom);
             jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (malus.points));
             if (jeu1.j1.getNbPt() < 0) {
@@ -617,6 +635,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Bonus) {// si l'event est un bonus 
 
             Bonus bonus = (Bonus) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setForeground(Color.blue);
             evenementFrame.setText(bonus.nom);
 
             jeu1.j1.setNbPt(jeu1.j1.getNbPt() + (bonus.points));// on ajoute au joueur son nb de points
@@ -638,11 +657,13 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
         } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Plus) {// si la case octroie un bonus au joueur sur la prichaine question 
 
             Plus plus = (Plus) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setForeground(Color.black);
             evenementFrame.setText(plus.nom);
             jeu1.j1.setaUnBonus(true);//change le booleen de joueur en true 
             deFrame.setEnabled(true);
         } else if (jeu1.plateau1.get(jeu1.j1.getPosition()) instanceof Neutre) {
             Neutre neutre = (Neutre) jeu1.plateau1.get(jeu1.j1.getPosition());
+            evenementFrame.setForeground(Color.black);
             evenementFrame.setText(neutre.nom);
             deFrame.setEnabled(true);
 
@@ -651,10 +672,23 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
 
     }//GEN-LAST:event_deFrameMouseClicked
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void abandonnerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_abandonnerMouseClicked
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_abandonnerMouseClicked
+
+    private void redoublerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_redoublerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_redoublerActionPerformed
+
+    private void redoublerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_redoublerMouseClicked
+        // TODO add your handling code here:
+        
+        FrameJeuOieIdmc newFrame = new FrameJeuOieIdmc();
+        newFrame.setVisible(true);
+        newFrame.deFrame.setEnabled(true);
+        newFrame.infos.setText("Veuillez lancer le dé ");
+    }//GEN-LAST:event_redoublerMouseClicked
 
     public void PoserQuestionFrame() {
         Question event = (Question) jeu1.plateau1.get(jeu1.j1.getPosition());
@@ -715,11 +749,11 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton abandonner;
     private javax.swing.JButton deFrame;
     private javax.swing.JLabel evenementFrame;
     private javax.swing.JFrame findepartie;
     private javax.swing.JLabel infos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JButton label1;
     private javax.swing.JButton label2;
@@ -733,6 +767,7 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
     private javax.swing.JFrame question;
     private javax.swing.JLabel questionAPoser;
     private javax.swing.JButton quit;
+    private javax.swing.JButton redoubler;
     private javax.swing.JButton rep1;
     private javax.swing.JButton rep2;
     private javax.swing.JButton rep3;

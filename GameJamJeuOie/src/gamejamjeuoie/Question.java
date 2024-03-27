@@ -11,7 +11,7 @@ public class Question extends Evenement {
 
 
     public Question(int nb) {
-        //questions.clear();
+        questions.clear();
         String[] test1 = {"Analyse:Quelle est la dérivée de ln(x) ?", "1) 1/x", "2) 42", "3) f(x)", "1"};
         questions.add(test1);
 
@@ -33,10 +33,10 @@ public class Question extends Evenement {
         String[] test7 = {"Culture générale: de quel style sont le plupart des bâtiments à Nancy?", "1)Géorgien", "2)Hausmanien", "3)Aucun", "2"};
         questions.add(test7);
 
-        String[] test8 = {"Automate: Est ce que (a+b)* contient tout les mots?", "1)oui", "2)non", "3)peut etre ", ""};
+        String[] test8 = {"Automate: Est ce que (a+b)* contient tous les mots de l'alphabet {a,b}?", "1)oui", "2)non", "3)peut etre ", "1"};
         questions.add(test8);
 
-        String[] test9 = {"Math: identités remarquable a^2+b^2?", "1) (a-b)^2+(a+b)^2", "2) 0", "3) (a+b)(a-b)", "2"};
+        String[] test9 = {"Math: identités remarquables a^2+b^2?", "1) (a-b)^2+(a+b)^2", "2) 0", "3) (a+b)(a-b)", "1"};
         questions.add(test9);
 
         String[] test10 = {"Culture générale: Quelle est la monnaie de Nancy?", "1) Le florain", "2) l'euro", "3)Le dollar", "1"};
