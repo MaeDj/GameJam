@@ -19,7 +19,7 @@ public class Bonus extends Evenement {
             super.nom = "Monsieur Guibon vous remercie pour les litchis ! + 1";
             points = +1;
         } else if(choix==2){
-            super.nom = "Excellent, vous avez réussi votre semestre ! +5 ";
+            super.nom = "Vous n'avez pas oublié la majuscule à la classe avant de rendre à M.Castagnos ! +5 ";
             points = +5;
         }else{
             super.nom = "Bravo, vous avez participé à la GameJam ! +3 ";
