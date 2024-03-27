@@ -339,15 +339,15 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
             .addGroup(panel1Layout.createSequentialGroup()
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(364, 364, 364)
-                        .addComponent(deFrame))
-                    .addGroup(panel1Layout.createSequentialGroup()
                         .addGap(114, 114, 114)
                         .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(evenementFrame, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                             .addComponent(infos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(33, 33, 33)
-                        .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(nbPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(369, 369, 369)
+                        .addComponent(deFrame)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
@@ -362,9 +362,9 @@ public class FrameJeuOieIdmc extends javax.swing.JFrame {
                         .addComponent(infos, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(evenementFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 550, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
                 .addComponent(deFrame)
-                .addGap(63, 63, 63))
+                .addGap(250, 250, 250))
         );
 
         newGame.setText("New Game");

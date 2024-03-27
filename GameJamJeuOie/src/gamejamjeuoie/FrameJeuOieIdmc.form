@@ -250,11 +250,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="364" max="-2" attributes="0"/>
-                          <Component id="deFrame" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="evenementFrame" pref="606" max="32767" attributes="0"/>
@@ -262,6 +258,10 @@
                           </Group>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="nbPoint" min="-2" pref="54" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="369" max="-2" attributes="0"/>
+                          <Component id="deFrame" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="31" max="32767" attributes="0"/>
@@ -283,9 +283,9 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="evenementFrame" min="-2" pref="55" max="-2" attributes="0"/>
-                  <EmptySpace pref="550" max="32767" attributes="0"/>
+                  <EmptySpace pref="363" max="32767" attributes="0"/>
                   <Component id="deFrame" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
